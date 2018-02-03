@@ -5,8 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+   
 </head>
 <body>
-    <canvas id="canvas"></canvas>
+    <header>
+        <h1>LEMINGS</h1>
+    </header>
+    
+    <section>
+        <div id="start">
+            <a href="" id="btn">Start</a>
+            <div>Score: 0</div>
+        </div>
+        <canvas id="canvas" width="800" height="450"></canvas>
+        <div id="control">
+            <div>
+                <p>Right</p>
+                <i class="fas fa-arrow-right"></i>
+            </div>
+            <div>
+                <p>Left</p>
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div>
+                <p>Dig</p>
+                <i class="fas fa-arrow-down"></i>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script
+    src="http://code.jquery.com/jquery-3.3.1.slim.js"
+    integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
+    crossorigin="anonymous"></script>
+    <script src="./js/objects/board.js"></script>
+    <script src="./js/objects/player.js"></script>
+    <script src="./js/game.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html>
