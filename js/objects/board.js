@@ -6,6 +6,7 @@ function Board(canvas,width,height) {
 }
 
 Board.prototype.drawBoard = function() {
+  console.log(this)
 //marco
 //cielo
 this.ctx.fillStyle="#00A1F1";
