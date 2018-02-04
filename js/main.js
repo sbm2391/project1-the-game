@@ -5,11 +5,16 @@ var fps = 30;
 $(document).ready(function(){
     canvas = document.getElementById("board").getContext('2d');
     myGame = new Game(canvas);
-    myGame.board.drawBoard();
+    
+        setInterval(function() {
+            myGame.board.drawBoard()
+            myGame.player1.drawPlayer()
+        },1000/fps)
+    
     $("#btn").on("click", function(){
-        // canvas = document.getElementById("board").getContext('2d');
         
         
+        ;
     });
 
 
