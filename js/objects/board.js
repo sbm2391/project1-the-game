@@ -5,6 +5,10 @@ function Board(canvas,width,height) {
 
 }
 
+Board.prototype.clearBoard = function (){
+  this.ctx.clearRect(0,0,this.width,this.height)
+}
+
 Board.prototype.drawBoard = function() {
   console.log(this)
 //marco
@@ -87,3 +91,4 @@ this.ctx.fillStyle="#00A1F1";
 this.ctx.fillRect(700,320,60,100);
 
 }
+
