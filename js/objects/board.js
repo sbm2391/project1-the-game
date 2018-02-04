@@ -10,7 +10,6 @@ Board.prototype.clearBoard = function (){
 }
 
 Board.prototype.drawBoard = function() {
-  console.log(this)
 //marco
 //cielo
 this.ctx.fillStyle="#00A1F1";
@@ -89,6 +88,8 @@ this.ctx.fillStyle="#542E04";
 this.ctx.fillRect(690,310,80,110);
 this.ctx.fillStyle="#00A1F1";
 this.ctx.fillRect(700,320,60,100);
+
+
 
 }
 

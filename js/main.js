@@ -3,21 +3,24 @@ var myGame;
 var fps = 60;
 
 $(document).ready(function(){
+    
     canvas = document.getElementById("board").getContext('2d');
     myGame = new Game(canvas);
         keyListener();
-        var a = setInterval(function() {
-            myGame.board.clearBoard()
-            myGame.board.drawBoard()
+        var a = setInterval(function(e) {
+            myGame.board.clearBoard();
+            myGame.board.drawBoard();
+            
             //lemming
             myGame.player1.drawPlayer();
+         
             
         },1000/fps)
     
-    $("#btn").on("click", function(){
+    
         
+        $("#btn").on("click", function(){   
         
-        ;
     });
     
 });
@@ -27,10 +30,13 @@ function keyListener(){
     document.addEventListener("keydown", function(e){
         switch (e.keyCode) {
             case 39: //->
-                myGame.player1.moveRight()               
+                myGame.player1.moveRight() 
                 break;
             case 37: //<-
-                myGame.player1.moveLeft()
+                myGame.player1.moveLeft();
+                break;
+            case 40: //down
+                myGame.player1.dig();
                 break;
             default:
                 break;

@@ -7,7 +7,7 @@ function Player (canvas, posX, posY) {
 }
 
 Player.prototype.drawPlayer = function (){
-    if(this.velY < 204) {
+    if(this.velY < 204 ) {
         /*leming*/
         //leming-head
         this.ctx.fillStyle="#ED9C80";
@@ -27,8 +27,8 @@ Player.prototype.drawPlayer = function (){
         this.ctx.fillRect(this.posX + 15,this.posY + 28 + this.velY,5,5);
         this.ctx.fillRect(this.posX - 5,this.posY + 28 + this.velY,5,5);
         this.velY+=3;
-    } else {
-        this.velY===0;
+     } else {
+        
         //leming-head
         this.ctx.fillStyle="#ED9C80";
         this.ctx.fillRect(this.posX + this.velX,this.posY + 8 + this.velY,15,15);
@@ -62,10 +62,65 @@ Player.prototype.moveRight = function (){
 
 Player.prototype.moveLeft = function (){
     if(this.velX > -63){
-        this.velX -= 3;
+        this.velX -= 5;
+        
     }else{ 
         return;
     }
 }
 
+Player.prototype.dig = function (){
+    if (this.velY < 280) {
+        this.velY += 5;
+    } else {
+        return;
+    }
+        
+ }
+
+Player.prototype.drawLemmingRight = function (){
+    /*lemming-right*/
+    //leming-right-head
+    this.ctx.fillStyle="#ED9C80";
+    this.ctx.fillRect(this.posX + this.velX ,this.posY + this.velY + 8,15,15);
+    this.ctx.fillRect(this.posX + this.velX + 6,this.posY + this.velY + 16,7,7);
+    this.ctx.fillRect(this.posX + this.velX,this.posY + this.velY + 23,7,7);
+    //leming-right-hear
+    this.ctx.fillStyle="#8A077B";
+    this.ctx.fillRect(this.posX + this.velX + 15,this.posY + this.velY + 8,8,8);
+    this.ctx.fillRect(this.posX + this.velX,this.posY + this.velY + 8,8,8);
+    this.ctx.fillRect(this.posX + this.velX + 6,this.posY + this.velY,11,8);
+    //leming-right-body
+    this.ctx.fillStyle="#073C70";
+    this.ctx.fillRect(this.posX + this.velX + 7,this.posY + this.velY + 23,8,7);
+    this.ctx.fillRect(this.posX + this.velX,this.posY + this.velY + 30,15,15);
+    this.ctx.fillRect(this.posX + this.velX + 11,this.posY + this.velY + 45,8,8);
+    this.ctx.fillRect(this.posX + this.velX - 4,this.posY + this.velY + 45,8,8);
+    //leming-right-hand
+    this.ctx.fillStyle="#ED9C80";
+    this.ctx.fillRect(this.posX + this.velX - 5,this.posY + this.velY + 28,5,5);
+}
+
+Player.prototype.drawLemmingLeft = function (){
+    /*leming-left*/
+    //leming-left-head
+    this.ctx.fillStyle="#ED9C80";
+    this.ctx.fillRect(this.posX + this.velX,this.posY + this.velY + 8,15,15);
+    this.ctx.fillRect(this.posX + this.velX - 5,this.posY + this.velY + 16,7,7);
+    this.ctx.fillRect(this.posX + this.velX + 8,this.posY + this.velY + 23,7,7);
+    //leming-left-hear
+    this.ctx.fillStyle="#8A077B";
+    this.ctx.fillRect(this.posX + this.velX + 7,this.posY + this.velY + 8,8,8);
+    this.ctx.fillRect(this.posX + this.velX - 8,this.posY + this.velY + 8,8,8);
+    this.ctx.fillRect(this.posX + this.velX - 2,this.posY + this.velY,11,8);
+    //leming-left-body
+    this.ctx.fillStyle="#073C70";
+    this.ctx.fillRect(this.posX + this.velX,this.posY + this.velY + 23,8,8);
+    this.ctx.fillRect(this.posX + this.velX,this.posY + this.velY + 30,15,15);
+    this.ctx.fillRect(this.posX + this.velX + 11,this.posY + this.velY + 45,8,8);
+    this.ctx.fillRect(this.posX + this.velX - 4,this.posY + this.velY + 45,8,8);
+    //leming-left-hand
+    this.ctx.fillStyle="#ED9C80";
+    this.ctx.fillRect(this.posX + this.velX + 15,this.posY + this.velY + 28,5,5);
+}
 
