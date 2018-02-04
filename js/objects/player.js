@@ -7,47 +7,17 @@ function Player (canvas, posX, posY) {
 }
 
 Player.prototype.drawPlayer = function (){
-    if(this.velY <= 202 || this.velY > 279) {
+    if(this.velY <= 202 || this.velY > 279 &&  this.velY < 413) {
         /*leming*/
-        //leming-head
-        this.ctx.fillStyle="#ED9C80";
-        this.ctx.fillRect(this.posX + this.velX,this.posY + 8 + this.velY,15,15);
-        //leming-hear
-        this.ctx.fillStyle="#8A077B";
-        this.ctx.fillRect(this.posX + this.velX + 11,this.posY + 8 + this.velY,8,8);
-        this.ctx.fillRect(this.posX + this.velX - 4,this.posY + 8 + this.velY,8,8);
-        this.ctx.fillRect(this.posX + this.velX + 2,this.posY + this.velY,11,8);
-        //leming-body
-        this.ctx.fillStyle="#073C70";
-        this.ctx.fillRect(this.posX + this.velX,this.posY + 23 + this.velY,15,23);
-        this.ctx.fillRect(this.posX + this.velX + 11,this.posY + 45 + this.velY,8,8);
-        this.ctx.fillRect(this.posX + this.velX - 4,this.posY + 45 + this.velY,8,8);
-        //leming-hand
-        this.ctx.fillStyle="#ED9C80";
-        this.ctx.fillRect(this.posX + this.velX + 15,this.posY + 28 + this.velY,5,5);
-        this.ctx.fillRect(this.posX + this.velX - 5,this.posY + 28 + this.velY,5,5);
+        this.drawLemming();
         this.velY+=3;
-     } else if (this.velY > 202 || this.velY > 350) {
+     } else  {
+        this.drawLemming();
         
-        //leming-head
-        this.ctx.fillStyle="#ED9C80";
-        this.ctx.fillRect(this.posX + this.velX,this.posY + 8 + this.velY,15,15);
-        //leming-hear
-        this.ctx.fillStyle="#8A077B";
-        this.ctx.fillRect(this.posX + 11 + this.velX,this.posY + 8 + this.velY,8,8);
-        this.ctx.fillRect(this.posX - 4 + this.velX,this.posY + 8 + this.velY,8,8);
-        this.ctx.fillRect(this.posX + 2 + this.velX,this.posY + this.velY,11,8);
-        //leming-body
-        this.ctx.fillStyle="#073C70";
-        this.ctx.fillRect(this.posX + this.velX,this.posY + 23 + this.velY,15,23);
-        this.ctx.fillRect(this.posX + 11 + this.velX,this.posY + 45 + this.velY,8,8);
-        this.ctx.fillRect(this.posX - 4 + this.velX,this.posY + 45 + this.velY,8,8);
-        //leming-hand
-        this.ctx.fillStyle="#ED9C80";
-        this.ctx.fillRect(this.posX + 15 + this.velX,this.posY + 28 + this.velY,5,5);
-        this.ctx.fillRect(this.posX - 5 + this.velX,this.posY + 28 + this.velY,5,5);
-        
-    }
+    } 
+    // else if (this.velY > 202 ) {
+    //     this.drawLemming();
+    // }
    
 }
 //move lemmings
@@ -78,6 +48,27 @@ Player.prototype.dig = function (){
         
  }
 //draw lemmings
+
+Player.prototype.drawLemming = function (){
+    //leming-head
+    this.ctx.fillStyle="#ED9C80";
+    this.ctx.fillRect(this.posX + this.velX,this.posY + 8 + this.velY,15,15);
+    //leming-hear
+    this.ctx.fillStyle="#8A077B";
+    this.ctx.fillRect(this.posX + 11 + this.velX,this.posY + 8 + this.velY,8,8);
+    this.ctx.fillRect(this.posX - 4 + this.velX,this.posY + 8 + this.velY,8,8);
+    this.ctx.fillRect(this.posX + 2 + this.velX,this.posY + this.velY,11,8);
+    //leming-body
+    this.ctx.fillStyle="#073C70";
+    this.ctx.fillRect(this.posX + this.velX,this.posY + 23 + this.velY,15,23);
+    this.ctx.fillRect(this.posX + 11 + this.velX,this.posY + 45 + this.velY,8,8);
+    this.ctx.fillRect(this.posX - 4 + this.velX,this.posY + 45 + this.velY,8,8);
+    //leming-hand
+    this.ctx.fillStyle="#ED9C80";
+    this.ctx.fillRect(this.posX + 15 + this.velX,this.posY + 28 + this.velY,5,5);
+    this.ctx.fillRect(this.posX - 5 + this.velX,this.posY + 28 + this.velY,5,5);
+}
+
 Player.prototype.drawLemmingRight = function (){
     /*lemming-right*/
     //leming-right-head
