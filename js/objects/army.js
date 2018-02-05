@@ -1,94 +1,39 @@
-function Player (canvas, posX, posY) {
+function Army(canvas, posX, posY) {
     this.ctx = canvas;
     this.posX = posX;
     this.posY = posY;
     this.velY = 0;
     this.velX = 0;
     this.points= 0;
-    this.direction="up";
+    this.direction="";
     
 }
 
+Army.prototype.moveArmy = function (){
 
-
-Player.prototype.drawPlayer = function (){
-    console.log(this)
-    if(this.posY <= 155 || this.posY > 240 && this.posY < 366) {
+   
+    if (this.direction === "right") {
+        this.velX +=2;
+    } else if (this.direction ==="left") {
+        this.velX -=2
+    }
+    if(this.velY <= 202) {
         /*leming*/
-        this.drawLemming();
-        this.posY+=3;
-    } else  {
-        if (this.direction==="left") {
-            this.drawLemmingLeft();
-        } else if (this.direction==="right") {
-            this.drawLemmingRight();
-        } else {
-            this.drawLemming(); 
-        }
+        this.drawArmy();
+        this.velY+=3;
+        this.direction = "right"
+    } else if(this.velX <  647){
+        this.drawArmyRight();
+        this.velX+=1;
+        this.direction='left'
         
     } 
    
 }
 
-//Game Over
-Player.prototype.gameOver = function (){
-    if (this.posY === 368 && this.posX < 360) {
-        console.log("you lost the game!")
-        $(".win").css("opacity", "100");
-        $(".win h2").text(`You lost! try again`);
-        $(".win p").text(`Score: ${this.points}`);
-    } 
-}
-//win game
-Player.prototype.winGame = function (){
-    if (this.posY > 308 && this.posX > 710) {
-        console.log("you win!")
-        this.points=1;
-        $(".win").css("opacity", "100");
-        $(".win p").text(`Score: ${this.points}`);
-    } 
-}
-
-
-//move lemmings 
-Player.prototype.moveRight = function (){
-    if(this.posX <  745){
-        this.posX += 10;
-        this.direction="right"
-    } else {
-        return;
-       
-    }
-}
-
-
-Player.prototype.moveLeft = function (){
-    if(this.posY < 158 && this.posX > 40){
-        this.posX -= 10;
-        this.direction="left"
-
-    }else if(this.posY < 368 && this.posX > 420){
-        this.posX -= 10;
-        this.direction="left"
-    } else {
-        return;
-    }
-}
-
-Player.prototype.dig = function (){
-    if (this.posY < 250 && (this.posX < 360 || this.posX > 420)) {
-        this.posY += 5;
-        this.direction="up"
-         
-
-    } else { 
-        return;
-    }
-        
- }
 //draw lemmings
 
-Player.prototype.drawLemming = function (){
+Army.prototype.drawArmy = function (){
     //leming-head
     this.ctx.fillStyle="#ED9C80";
     this.ctx.fillRect(this.posX + this.velX,this.posY + 8 + this.velY,15,15);
@@ -108,7 +53,7 @@ Player.prototype.drawLemming = function (){
     this.ctx.fillRect(this.posX - 5 + this.velX,this.posY + 28 + this.velY,5,5);
 }
 
-Player.prototype.drawLemmingRight = function (){
+Army.prototype.drawArmyRight = function (){
     /*lemming-right*/
     //leming-right-head
     this.ctx.fillStyle="#ED9C80";
@@ -131,7 +76,7 @@ Player.prototype.drawLemmingRight = function (){
     this.ctx.fillRect(this.posX + this.velX - 5,this.posY + this.velY + 28,5,5);
 }
 
-Player.prototype.drawLemmingLeft = function (){
+Army.prototype.drawArmyLeft = function (){
     /*leming-left*/
     //leming-left-head
     this.ctx.fillStyle="#ED9C80";
@@ -153,6 +98,3 @@ Player.prototype.drawLemmingLeft = function (){
     this.ctx.fillStyle="#ED9C80";
     this.ctx.fillRect(this.posX + this.velX + 15,this.posY + this.velY + 28,5,5);
 }
-
-
-
