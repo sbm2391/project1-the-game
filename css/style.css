@@ -10,8 +10,6 @@ body {
     
     font-family: 'Roboto', sans-serif;
     font-size: 24px;
-    
-    
 }
 
 h1 {
@@ -26,6 +24,8 @@ section{
     display: flex;
     flex-direction: column;
     margin: 0;
+    
+    align-items: center;
 }
 
 a {
@@ -77,6 +77,23 @@ a {
 
 canvas {
     max-width: 800px;
-    max-height: 450px;
-    margin: 0 auto;
+    max-height: 450px;  
+}
+
+.win {
+    width: 800px;
+    height: 450px;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fafafa;
+    align-items: center;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+   
+}
+.background-win {
+    position: relative;
 }

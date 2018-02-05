@@ -37,7 +37,9 @@ Player.prototype.gameOver = function (){
 Player.prototype.winGame = function (){
     if (this.velY > 363 && this.velX > 600) {
         console.log("you win!")
-        return this.points=1;
+        this.points=1;
+        $(".win").css("opacity", "100");
+        $(".win p").text(`Score: ${this.points}`)
     } 
 }
 
