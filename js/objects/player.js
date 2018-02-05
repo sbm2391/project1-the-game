@@ -13,18 +13,34 @@ Player.prototype.drawPlayer = function (){
         this.velY+=3;
     } else  {
         this.drawLemming();
+        // console.log(this.velX);
+        // console.log(this.velY);
         
     } 
    
 }
-//move lemmings || this.vel < 204)
+
+//Game Over
+Player.prototype.gameOver = function (){
+    if (this.velY === 413 && this.velX < 300) {
+        console.log("you lost the game!")
+    } 
+}
+
+Player.prototype.winGame = function (){
+    if (this.velY > 363 && this.velX > 600) {
+        console.log("you win!")
+    } 
+}
+//move lemmings 
 Player.prototype.moveRight = function (){
     
     if(this.velX <  647){
-     
+        console.log(this.velX)
         this.velX += 5;
     } else {
         return;
+       
     }
 }
 

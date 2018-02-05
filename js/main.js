@@ -10,10 +10,12 @@ $(document).ready(function(){
         var a = setInterval(function(e) {
             myGame.board.clearBoard();
             myGame.board.drawBoard();
-            
             //lemming
             myGame.player1.drawPlayer();
-         
+            //game over
+            myGame.player1.gameOver();
+            //win
+            myGame.player1.winGame();
             
         },1000/fps)
     
