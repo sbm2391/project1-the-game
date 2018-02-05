@@ -31,6 +31,9 @@ Player.prototype.drawPlayer = function (){
 Player.prototype.gameOver = function (){
     if (this.velY === 413 && this.velX < 300) {
         console.log("you lost the game!")
+        $(".win").css("opacity", "100");
+        $(".win h2").text(`You lost! try again`);
+        $(".win p").text(`Score: ${this.points}`);
     } 
 }
 //win game
@@ -39,7 +42,7 @@ Player.prototype.winGame = function (){
         console.log("you win!")
         this.points=1;
         $(".win").css("opacity", "100");
-        $(".win p").text(`Score: ${this.points}`)
+        $(".win p").text(`Score: ${this.points}`);
     } 
 }
 
