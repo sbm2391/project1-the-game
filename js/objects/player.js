@@ -4,6 +4,8 @@ function Player (canvas, posX, posY) {
     this.posY = posY;
     this.velY = 0;
     this.velX = 0;
+    this.points= 0;
+    this.direction="up"
 }
 
 Player.prototype.drawPlayer = function (){
@@ -12,9 +14,13 @@ Player.prototype.drawPlayer = function (){
         this.drawLemming();
         this.velY+=3;
     } else  {
-        this.drawLemming();
-        // console.log(this.velX);
-        // console.log(this.velY);
+        if(this.direction==="up") {
+            this.drawLemming();
+        } else if (this.direction==="left") {
+            this.drawLemmingLeft();
+        } else if (this.direction==="right") {
+            this.drawLemmingRight();
+        }
         
     } 
    
@@ -26,18 +32,20 @@ Player.prototype.gameOver = function (){
         console.log("you lost the game!")
     } 
 }
-
+//win game
 Player.prototype.winGame = function (){
     if (this.velY > 363 && this.velX > 600) {
         console.log("you win!")
+        return this.points=1;
     } 
 }
+
+
 //move lemmings 
 Player.prototype.moveRight = function (){
-    
     if(this.velX <  647){
-        console.log(this.velX)
-        this.velX += 5;
+        this.velX += 10;
+        this.direction="right"
     } else {
         return;
        
@@ -48,8 +56,10 @@ Player.prototype.moveRight = function (){
 Player.prototype.moveLeft = function (){
     if(this.velY === 204 && this.velX > -63){
         this.velX -= 5;
+        this.direction="left"
     }else if(this.velY > 204 && this.velX > 320){
         this.velX -= 5;
+        this.direction="left"
     } else {
         return;
     }
@@ -58,6 +68,7 @@ Player.prototype.moveLeft = function (){
 Player.prototype.dig = function (){
     if (this.velY < 280 && (this.velX < 270 || this.velX > 318)) {
         this.velY += 5;
+        this.direction="up"
     } else { 
         return;
     }

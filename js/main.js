@@ -7,6 +7,7 @@ $(document).ready(function(){
     canvas = document.getElementById("board").getContext('2d');
     myGame = new Game(canvas);
         keyListener();
+       
         var a = setInterval(function(e) {
             myGame.board.clearBoard();
             myGame.board.drawBoard();
@@ -16,17 +17,17 @@ $(document).ready(function(){
             myGame.player1.gameOver();
             //win
             myGame.player1.winGame();
-            
+            score();
         },1000/fps)
     
-    
-        
-        $("#btn").on("click", function(){   
+    $("#btn").on("click", function(){   
         
     });
     
 });
-
+function score(){
+    $("#score").text(`Score: ${myGame.player1.points}`)
+}
 //Funcion para escuchar eventos del teclado
 function keyListener(){
     document.addEventListener("keydown", function(e){
