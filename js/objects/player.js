@@ -7,22 +7,21 @@ function Player (canvas, posX, posY) {
 }
 
 Player.prototype.drawPlayer = function (){
-    if(this.velY <= 202 || this.velY > 279 &&  this.velY < 413) {
+    if(this.velY <= 202 || this.velY > 279 && this.velY < 413) {
         /*leming*/
         this.drawLemming();
         this.velY+=3;
-     } else  {
+    } else  {
         this.drawLemming();
         
     } 
-    // else if (this.velY > 202 ) {
-    //     this.drawLemming();
-    // }
    
 }
-//move lemmings
+//move lemmings || this.vel < 204)
 Player.prototype.moveRight = function (){
-    if(this.velX < 647){
+    
+    if(this.velX <  647){
+     
         this.velX += 5;
     } else {
         return;
@@ -31,18 +30,19 @@ Player.prototype.moveRight = function (){
 
 
 Player.prototype.moveLeft = function (){
-    if(this.velX > -63){
+    if(this.velY === 204 && this.velX > -63){
         this.velX -= 5;
-        
-    }else{ 
+    }else if(this.velY > 204 && this.velX > 320){
+        this.velX -= 5;
+    } else {
         return;
     }
 }
 
 Player.prototype.dig = function (){
-    if (this.velY < 280) {
+    if (this.velY < 280 && (this.velX < 270 || this.velX > 318)) {
         this.velY += 5;
-    } else {
+    } else { 
         return;
     }
         

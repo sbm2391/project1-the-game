@@ -1,7 +1,7 @@
 var canvas;
 var myGame;
 var fps = 60;
-
+var mySound;
 $(document).ready(function(){
     
     canvas = document.getElementById("board").getContext('2d');
