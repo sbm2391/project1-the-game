@@ -14,12 +14,13 @@ Player.prototype.drawPlayer = function (){
         this.drawLemming();
         this.velY+=3;
     } else  {
-        if(this.direction==="up") {
-            this.drawLemming();
-        } else if (this.direction==="left") {
+        
+        if (this.direction==="left") {
             this.drawLemmingLeft();
         } else if (this.direction==="right") {
             this.drawLemmingRight();
+        } else {
+            this.drawLemming(); 
         }
         
     } 
@@ -101,7 +102,7 @@ Player.prototype.drawLemmingRight = function (){
     //leming-right-head
     this.ctx.fillStyle="#ED9C80";
     this.ctx.fillRect(this.posX + this.velX ,this.posY + this.velY + 8,15,15);
-    this.ctx.fillRect(this.posX + this.velX + 6,this.posY + this.velY + 16,7,7);
+    this.ctx.fillRect(this.posX + this.velX + 15,this.posY + this.velY + 16,7,7);
     this.ctx.fillRect(this.posX + this.velX,this.posY + this.velY + 23,7,7);
     //leming-right-hear
     this.ctx.fillStyle="#8A077B";
@@ -141,4 +142,7 @@ Player.prototype.drawLemmingLeft = function (){
     this.ctx.fillStyle="#ED9C80";
     this.ctx.fillRect(this.posX + this.velX + 15,this.posY + this.velY + 28,5,5);
 }
+
+Player.prototype.drawLemmingDig = function (){
+} 
 
