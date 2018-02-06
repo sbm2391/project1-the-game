@@ -88,6 +88,7 @@ Player.prototype.dig = function (){
         
  }
 //draw lemmings
+
 Player.prototype.drawGround = function (){
     this.ctx.fillStyle="#8A4B07";
     this.ctx.fillRect(this.posX - 4 + this.velX,this.posY + 45 + this.velY,24,5);

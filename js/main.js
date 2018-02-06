@@ -15,6 +15,8 @@ $(document).ready(function(){
             myGame.player1.drawPlayer();
            
             myGame.army1.moveArmy();
+            myGame.army2.moveArmy();
+            myGame.army3.moveArmy();
             //game over
             myGame.player1.gameOver();
             //win
@@ -48,6 +50,12 @@ function keyListener(){
     });
 
     //function follow
-    
+    // function followLeming(){
+    //     if(myGame.player1.position.lenght > 0) {
+
+    //     }else{
+    //         return;
+    //     }
+    // }
 }
 // 
