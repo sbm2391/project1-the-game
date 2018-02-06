@@ -7,6 +7,7 @@ $(document).ready(function(){
         canvas = document.getElementById("board").getContext('2d');
         myGame = new Game(canvas);  
         keyListener();
+        
         var a = setInterval(function(e) {
             myGame.board.clearBoard();
             myGame.board.drawBoard();
@@ -15,14 +16,17 @@ $(document).ready(function(){
             myGame.player1.drawPlayer();
            
             myGame.army1.moveArmy();
-            myGame.army2.moveArmy();
-            myGame.army3.moveArmy();
+            // myGame.army2.moveArmy();
+            // myGame.army3.moveArmy();
             //game over
             myGame.player1.gameOver();
             //win
             myGame.player1.winGame();
             score();
+            followLemming();
         },1000/fps)
+
+        
     $("#btn").on("click", function(){       
     });
 
@@ -50,12 +54,15 @@ function keyListener(){
     });
 
     //function follow
-    // function followLeming(){
-    //     if(myGame.player1.position.lenght > 0) {
 
-    //     }else{
-    //         return;
-    //     }
-    // }
 }
 // 
+function followLemming(){
+  
+        if(myGame.player1.position[0].x === myGame.army1.posX) {
+          console.log("entra2");
+          myGame.army1.ArmyDig();
+        } else {
+            return;
+        }
+}

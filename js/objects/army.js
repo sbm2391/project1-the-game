@@ -12,7 +12,6 @@ function Army(canvas, posX, posY) {
 
 //move army
 Army.prototype.moveArmy = function (){
-    console.log(this);
     if(this.posY <= 155 || this.posY > 240 && this.posY < 366) {
         /*leming*/
         this.drawArmy();
@@ -45,6 +44,15 @@ Army.prototype.moveArmy = function (){
     }
 }
 
+Army.prototype.ArmyDig = function (){
+    if (this.posY < 250 && (this.posX < 360 || this.posX > 420)) {
+        //this.drawGround();
+        this.posY += 2;
+        this.direction="up"
+    } else { 
+        return;
+    }
+}
 //draw lemmings
 
 Army.prototype.drawArmy = function (){

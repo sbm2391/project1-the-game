@@ -13,7 +13,6 @@ function Player (canvas, posX, posY) {
 
 
 Player.prototype.drawPlayer = function (){
-    console.log(this)
     if(this.posY <= 155 || this.posY > 240 && this.posY < 366) {
         /*leming*/
         this.drawLemming();
