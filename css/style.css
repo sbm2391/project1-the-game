@@ -28,7 +28,7 @@ section{
     align-items: center;
 }
 
-a {
+button {
     font-size: 24px;
     width: 100px;
     text-decoration: none;
@@ -37,6 +37,7 @@ a {
     border: black solid 2px;
     padding: 10px;
     border-radius: 25px;
+    background-color: white;
 }
 
 #start {

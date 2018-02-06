@@ -6,10 +6,15 @@ var totalScore=0;
 var myMusic;
 var totalScoreArmy=0;
 $(document).ready(function(){
-        canvas = document.getElementById("board").getContext('2d');
-        myGame = new Game(canvas); 
+
+    canvas = document.getElementById("board").getContext('2d');
+    myGame = new Game(canvas); 
+    myGame.board.drawBoard1();
+
+    $("#btn").on("click", function(){     
         //audio 
         myMusic = new Audio("music/background-music.mp3");
+        myMusic.loop = true;
         myMusic.volume = 0.3;
         myMusic.play();
         //controls
@@ -17,16 +22,13 @@ $(document).ready(function(){
         //army
         army();
         var a = setInterval(function(e) {
-            myGame.board.drawBoard();
+            myGame.board.drawBoard1();
             //lemming
             myGame.player1.drawPlayer();
             startArmy();
             myGame.player1.gameOver();
             score();
         },1000/fps)
-
-        
-    $("#btn").on("click", function(){       
     });
 
     
@@ -35,7 +37,6 @@ $(document).ready(function(){
 function army (){
     for (var i = 500; i <= 4500; i+=500){
         myGame.army.push(new Army (canvas, 100, -i));
-        console.log(myGame.army)
     }  
 }
 
@@ -51,9 +52,7 @@ function startArmy(){
               return;
           }
         }
-        console.log(totalScoreArmy);
         totalScore = totalScoreArmy + myGame.player1.points;
-        
     });
 }
 

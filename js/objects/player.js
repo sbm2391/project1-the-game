@@ -33,7 +33,6 @@ Player.prototype.drawPlayer = function (){
 //Game Over
 Player.prototype.gameOver = function (){
     if (this.posY > 366 && this.posX < 360) {
-        console.log("you lost the game!")
         $(".win").css("opacity", "100");
         $(".win h2").text(`You lost! try again`);
         $(".win p").text(`Score: ${this.points}`);
