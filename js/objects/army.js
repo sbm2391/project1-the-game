@@ -17,7 +17,9 @@ Army.prototype.gameOver = function (){
         $(".win h2").text(`You lost! try again`);
         $(".win p").text(`Score: ${this.points}`);
     } else  if (this.posY > 308 && this.posX > 710) {
-        this.points=1;
+        totalScore+=1;
+        console.log(totalScore)
+        //console.log(this.points)
         this.visible = false;
         $("#score").text(`Score: ${totalScore}`);
     } 
@@ -25,6 +27,7 @@ Army.prototype.gameOver = function (){
 
 //move army
 Army.prototype.moveArmy = function (){
+   
     if (!this.visible) return;
     //console.log(this)
     if(this.posY <= 155 || this.posY > 240 && this.posY < 366) {
