@@ -4,9 +4,8 @@ function Army(canvas, posX, posY) {
     this.posY = posY;
     this.velY = 0;
     this.velX = 0;
-    
     this.direction="";
-    this.visible = true;  
+     
 }
 
 //Game Over
@@ -21,7 +20,7 @@ Army.prototype.gameOver = function (){
 
 //move army
 Army.prototype.moveArmy = function (){
-    if (!this.visible) return;
+    
     //console.log(this)
     if(this.posY <= 155 || this.posY > 240 && this.posY < 366) {
         /*leming*/

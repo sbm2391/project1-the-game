@@ -18,18 +18,11 @@ $(document).ready(function(){
         army();
         var a = setInterval(function(e) {
             myGame.board.drawBoard();
-            
             //lemming
             myGame.player1.drawPlayer();
             startArmy();
-            //myGame.army1.moveArmy();
-            //game over
-            //myGame.army1.gameOver();
             myGame.player1.gameOver();
-            
             score();
-            //followLemming();
-
         },1000/fps)
 
         
