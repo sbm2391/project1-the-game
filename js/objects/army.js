@@ -4,7 +4,7 @@ function Army(canvas, posX, posY) {
     this.posY = posY;
     this.velY = 0;
     this.velX = 0;
-    this.points= 0;
+    
     this.direction="";
     this.visible = true;  
 }
@@ -53,17 +53,12 @@ Army.prototype.moveArmy = function (){
     }
     myGame.army.forEach(function(element, index){
     if (element.posY > 308 && element.posX > 710) {
-           totalScore+=1;
+            totalScoreArmy+=1;
            myGame.army.splice(index, 1)
-           
+           console.log(totalScoreArmy)
         } 
-    })
-    //   for(var i = 0; i < myGame.army.length; i++){
-    //     if (myGame.army[i].posY > 308 && myGame.army[i].posX > 710) {
-    //         //myGame.army.slice(i,2)
-    //         console.log(myGame.army[i].posY);
-    //         totalScoreArmy+=1
-    //     } 
+    });
+    
     }
 
 

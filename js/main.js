@@ -60,18 +60,20 @@ function startArmy(){
         }
         console.log(totalScoreArmy);
         totalScore = totalScoreArmy + myGame.player1.points;
-        if (totalScore === 10){
-            console.log(totalScore)
-            $(".win").css("opacity", "100");
-            $(".win p").text(`Score: ${totalScore}`);
-            $("#score").text(`Score: ${totalScore}`);
-            myMusic.pause();
-        }
+        
     });
 }
 
 function score(){
-    $("#score").text(`Score: ${myGame.player1.points}`)
+    totalScore = totalScoreArmy + myGame.player1.points;
+    $("#score").text(`Score: ${totalScore}`)
+    if (totalScore === 10){
+        console.log(totalScore)
+        $(".win").css("opacity", "100");
+        $(".win p").text(`Score: ${totalScore}`);
+        $("#score").text(`Score: ${totalScore}`);
+        myMusic.pause();
+    }
 }
 //Funcion para escuchar eventos del teclado
 function keyListener(){
