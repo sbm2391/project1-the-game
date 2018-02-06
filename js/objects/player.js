@@ -94,7 +94,7 @@ Player.prototype.drawLemming = function (){
     this.ctx.fillRect(this.posX - 4 + this.velX,this.posY + 8 + this.velY,8,8);
     this.ctx.fillRect(this.posX + 2 + this.velX,this.posY + this.velY,11,8);
     //leming-body
-    this.ctx.fillStyle="#073C70";
+    this.ctx.fillStyle="#7D1702";
     this.ctx.fillRect(this.posX + this.velX,this.posY + 23 + this.velY,15,23);
     this.ctx.fillRect(this.posX + 11 + this.velX,this.posY + 45 + this.velY,8,8);
     this.ctx.fillRect(this.posX - 4 + this.velX,this.posY + 45 + this.velY,8,8);
@@ -118,7 +118,7 @@ Player.prototype.drawLemmingRight = function (){
     this.ctx.fillRect(this.posX + this.velX,this.posY + this.velY + 8,8,8);
     this.ctx.fillRect(this.posX + this.velX + 6,this.posY + this.velY,11,8);
     //leming-right-body
-    this.ctx.fillStyle="#073C70";
+    this.ctx.fillStyle="#7D1702";
     this.ctx.fillRect(this.posX + this.velX + 7,this.posY + this.velY + 23,8,7);
     this.ctx.fillRect(this.posX + this.velX,this.posY + this.velY + 30,15,15);
     this.ctx.fillRect(this.posX + this.velX + 11,this.posY + this.velY + 45,8,8);
@@ -141,7 +141,7 @@ Player.prototype.drawLemmingLeft = function (){
     this.ctx.fillRect(this.posX + this.velX - 8,this.posY + this.velY + 8,8,8);
     this.ctx.fillRect(this.posX + this.velX - 2,this.posY + this.velY,11,8);
     //leming-left-body
-    this.ctx.fillStyle="#073C70";
+    this.ctx.fillStyle="#7D1702";
     this.ctx.fillRect(this.posX + this.velX,this.posY + this.velY + 23,8,8);
     this.ctx.fillRect(this.posX + this.velX,this.posY + this.velY + 30,15,15);
     this.ctx.fillRect(this.posX + this.velX + 11,this.posY + this.velY + 45,8,8);
