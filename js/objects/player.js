@@ -6,6 +6,7 @@ function Player (canvas, posX, posY) {
     this.velX = 0;
     this.points= 0;
     this.direction="up";
+    this.position = [];
     
 }
 
@@ -77,16 +78,20 @@ Player.prototype.moveLeft = function (){
 
 Player.prototype.dig = function (){
     if (this.posY < 250 && (this.posX < 360 || this.posX > 420)) {
+        //this.drawGround();
+        this.position.push({x:this.posX,y:this.posY})
         this.posY += 5;
         this.direction="up"
-         
-
     } else { 
         return;
     }
         
  }
 //draw lemmings
+Player.prototype.drawGround = function (){
+    this.ctx.fillStyle="#8A4B07";
+    this.ctx.fillRect(this.posX - 4 + this.velX,this.posY + 45 + this.velY,24,5);
+}
 
 Player.prototype.drawLemming = function (){
     //leming-head

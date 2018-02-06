@@ -13,7 +13,7 @@ $(document).ready(function(){
             //lemming
             
             myGame.player1.drawPlayer();
-            myGame.army1.directions();
+           
             myGame.army1.moveArmy();
             //game over
             myGame.player1.gameOver();

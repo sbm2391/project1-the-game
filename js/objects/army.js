@@ -10,7 +10,7 @@ function Army(canvas, posX, posY) {
 }
 
 
-
+//move army
 Army.prototype.moveArmy = function (){
     console.log(this);
     if(this.posY <= 155 || this.posY > 240 && this.posY < 366) {
@@ -20,8 +20,13 @@ Army.prototype.moveArmy = function (){
     } else  {
         
         if (this.direction ==="left") {
-            this.drawArmyLeft();
-            this.posX-=2
+            if(this.posX === 40) {
+                this.direction ="right";
+                this.drawArmyRight();
+            } else {
+                this.drawArmyLeft();
+                this.posX-=1
+            }
         } else if (this.direction ==="right") {
             
             if(this.posX === 740) {
@@ -29,27 +34,16 @@ Army.prototype.moveArmy = function (){
                 this.drawArmyLeft();
             } else {
                 this.drawArmyRight();
-                this.posX+=2
+                this.posX+=1
             }
             
         } else {
             this.drawArmy();
              this.direction="right"
-
         }
        
     }
 }
-
-Army.prototype.directions = function (){
-    if(this.posX===100 && this.posY === 150){
-        this.direction = "right"
-    } else if(this.posX===745){
-        this.direction = "left"
-    } else if(this.posX===40){
-        this.direction = "right"
-    } 
- }
 
 //draw lemmings
 
