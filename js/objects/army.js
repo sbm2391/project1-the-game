@@ -16,18 +16,11 @@ Army.prototype.gameOver = function (){
         $(".win").css("opacity", "100");
         $(".win h2").text(`You lost! try again`);
         $(".win p").text(`Score: ${this.points}`);
-    } else  if (this.posY > 308 && this.posX > 710) {
-        totalScore+=1;
-        console.log(totalScore)
-        //console.log(this.points)
-        this.visible = false;
-        $("#score").text(`Score: ${totalScore}`);
     } 
 }
 
 //move army
 Army.prototype.moveArmy = function (){
-   
     if (!this.visible) return;
     //console.log(this)
     if(this.posY <= 155 || this.posY > 240 && this.posY < 366) {
@@ -56,10 +49,23 @@ Army.prototype.moveArmy = function (){
         } else {
             this.drawArmy();
              this.direction="right"
-        }
-       
+        }  
     }
-}
+    myGame.army.forEach(function(element, index){
+    if (element.posY > 308 && element.posX > 710) {
+           totalScore+=1;
+           myGame.army.splice(index, 1)
+           
+        } 
+    })
+    //   for(var i = 0; i < myGame.army.length; i++){
+    //     if (myGame.army[i].posY > 308 && myGame.army[i].posX > 710) {
+    //         //myGame.army.slice(i,2)
+    //         console.log(myGame.army[i].posY);
+    //         totalScoreArmy+=1
+    //     } 
+    }
+
 
 Army.prototype.ArmyDig = function (){
     if (this.posY < 250 && (this.posX < 360 || this.posX > 420)) {

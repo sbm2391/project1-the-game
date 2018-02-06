@@ -4,6 +4,7 @@ var fps = 60;
 var mySound;
 var totalScore=0;
 var myMusic;
+var totalScoreArmy=0;
 $(document).ready(function(){
         canvas = document.getElementById("board").getContext('2d');
         myGame = new Game(canvas); 
@@ -14,7 +15,7 @@ $(document).ready(function(){
         //controls
         keyListener();
         //army
-        army ();
+        army();
         var a = setInterval(function(e) {
             myGame.board.drawBoard();
             
@@ -40,32 +41,25 @@ $(document).ready(function(){
 
 function army (){
     for (var i = 500; i <= 4500; i+=500){
-        myGame.army.push({army:new Army (canvas, 100, -i)})
-    }
-    //myGame.army.forEach(function(element){
-
-    }
-//}
+        myGame.army.push(new Army (canvas, 100, -i));
+        console.log(myGame.army)
+    }  
+}
 
 function startArmy(){
-    // for (let i = 0; i < myGame.army.length; i++) {
-    //      console.log(myGame.army[i].moveArmy())
-    //      if (myGame.) {
-             
-    //      }
-        
-    //}
+   
     myGame.army.forEach(function(element){
-        element.army.moveArmy();
-        element.army.gameOver();
-        if (myGame.player1.position[0].x === element.army.posX) {
-            element.army.ArmyDig();
+        element.moveArmy();
+        //element.army.gameOver();
+        if (myGame.player1.position.length>0){
+        if (myGame.player1.position[0].x === element.posX) {
+            element.ArmyDig();
           } else {
               return;
           }
-        
-        console.log(element.army.points);
-        totalScore = element.army.points + myGame.player1.points;
+        }
+        console.log(totalScoreArmy);
+        totalScore = totalScoreArmy + myGame.player1.points;
         if (totalScore === 10){
             console.log(totalScore)
             $(".win").css("opacity", "100");
@@ -100,25 +94,3 @@ function keyListener(){
     //function follow
 
 }
-// follow Lemming
-// function followLemming(){
-//         if(myGame.player1.position[0].x === myGame.army1.posX) {
-//           console.log("entra2");
-//           myGame.army1.ArmyDig();
-//         } else {
-//             return;
-//         }
-// }
-
-// function score() {
-//     totalScore = myGame.army1.points + myGame.player1.points;
-//     if (totalScore === 2){
-//         console.log(totalScore)
-//         $(".win").css("opacity", "100");
-//         $(".win p").text(`Score: ${totalScore}`);
-//         $("#score").text(`Score: ${totalScore}`);
-//         myMusic.pause();
-//     }
-
-// }
-
