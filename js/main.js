@@ -3,14 +3,22 @@ var myGame;
 var fps = 60;
 var mySound;
 var totalScore=0;
+var myMusic;
 
 $(document).ready(function(){
         canvas = document.getElementById("board").getContext('2d');
         myGame = new Game(canvas);  
+        myMusic = new Audio("music/background-music.mp3");
+        myMusic.volume = 0.3;
+        myMusic.play();
+        
+        
         keyListener();
+        
         
         var a = setInterval(function(e) {
             myGame.board.drawBoard();
+            
             //lemming
             myGame.player1.drawPlayer();
             myGame.army1.moveArmy();
@@ -20,6 +28,7 @@ $(document).ready(function(){
             
             score();
             followLemming();
+
         },1000/fps)
 
         
@@ -69,6 +78,7 @@ function score() {
         $(".win").css("opacity", "100");
         $(".win p").text(`Score: ${totalScore}`);
         $("#score").text(`Score: ${totalScore}`);
+        myMusic.pause();
     }
 
 }
