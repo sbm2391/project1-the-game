@@ -6,13 +6,13 @@ function Player (canvas, posX, posY) {
     this.velX = 0;
     this.points= 0;
     this.direction="up";
+    this.isDiggin = false;
     this.position = [];
-    
+    this.visible = true;   
 }
 
-
-
 Player.prototype.drawPlayer = function (){
+    if (!this.visible) return;
     if(this.posY <= 155 || this.posY > 240 && this.posY < 366) {
         /*leming*/
         this.drawLemming();
@@ -23,7 +23,7 @@ Player.prototype.drawPlayer = function (){
         } else if (this.direction==="right") {
             this.drawLemmingRight();
         } else {
-            this.drawLemming(); 
+            this.drawLemming();
         }
         
     } 
@@ -37,15 +37,11 @@ Player.prototype.gameOver = function (){
         $(".win").css("opacity", "100");
         $(".win h2").text(`You lost! try again`);
         $(".win p").text(`Score: ${this.points}`);
-    } 
-}
-//win game
-Player.prototype.winGame = function (){
-    if (this.posY > 308 && this.posX > 710) {
-        console.log("you win!")
+    } else  if (this.posY > 308 && this.posX > 710) {
         this.points=1;
-        $(".win").css("opacity", "100");
-        $(".win p").text(`Score: ${this.points}`);
+        this.visible = false;
+        console.log("player points" + this.points)
+        $("#score").text(`Score: ${totalScore}`);
     } 
 }
 
@@ -77,22 +73,18 @@ Player.prototype.moveLeft = function (){
 
 Player.prototype.dig = function (){
     if (this.posY < 250 && (this.posX < 360 || this.posX > 420)) {
-        //this.drawGround();
+        this.isDiggin = true;
         this.position.push({x:this.posX,y:this.posY})
         this.posY += 5;
         this.direction="up"
     } else { 
+        
+        //this.isDiggin = false;
         return;
     }
         
  }
 //draw lemmings
-
-Player.prototype.drawGround = function (){
-    this.ctx.fillStyle="#8A4B07";
-    this.ctx.fillRect(this.posX - 4 + this.velX,this.posY + 45 + this.velY,24,5);
-}
-
 Player.prototype.drawLemming = function (){
     //leming-head
     this.ctx.fillStyle="#ED9C80";
@@ -111,6 +103,7 @@ Player.prototype.drawLemming = function (){
     this.ctx.fillStyle="#ED9C80";
     this.ctx.fillRect(this.posX + 15 + this.velX,this.posY + 28 + this.velY,5,5);
     this.ctx.fillRect(this.posX - 5 + this.velX,this.posY + 28 + this.velY,5,5);
+    
 }
 
 Player.prototype.drawLemmingRight = function (){

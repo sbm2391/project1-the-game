@@ -6,12 +6,27 @@ function Army(canvas, posX, posY) {
     this.velX = 0;
     this.points= 0;
     this.direction="";
-    
+    this.visible = true;  
 }
 
+//Game Over
+Army.prototype.gameOver = function (){
+    if (this.posY > 366 && this.posX < 360) {
+        console.log("you lost the game!")
+        $(".win").css("opacity", "100");
+        $(".win h2").text(`You lost! try again`);
+        $(".win p").text(`Score: ${this.points}`);
+    } else  if (this.posY > 308 && this.posX > 710) {
+        this.points=1;
+        this.visible = false;
+        $("#score").text(`Score: ${totalScore}`);
+    } 
+}
 
 //move army
 Army.prototype.moveArmy = function (){
+    if (!this.visible) return;
+    //console.log(this)
     if(this.posY <= 155 || this.posY > 240 && this.posY < 366) {
         /*leming*/
         this.drawArmy();
@@ -19,7 +34,7 @@ Army.prototype.moveArmy = function (){
     } else  {
         
         if (this.direction ==="left") {
-            if(this.posX === 40) {
+            if(this.posX === 40 || (this.posY > 360 && this.posX === 420)) {
                 this.direction ="right";
                 this.drawArmyRight();
             } else {

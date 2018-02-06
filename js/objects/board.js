@@ -89,7 +89,13 @@ this.ctx.fillRect(690,310,80,110);
 this.ctx.fillStyle="#00A1F1";
 this.ctx.fillRect(700,320,60,100);
 
+//gap
+if(myGame.player1.isDiggin){
+  this.ctx.fillStyle="#8A4B07";
+  
 
+  this.ctx.fillRect(myGame.player1.position[0].x - 4,  myGame.player1.position[0].y + 20,25,65);
+}
 
 }
 

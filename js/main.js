@@ -2,6 +2,7 @@ var canvas;
 var myGame;
 var fps = 60;
 var mySound;
+var totalScore=0;
 
 $(document).ready(function(){
         canvas = document.getElementById("board").getContext('2d');
@@ -9,19 +10,14 @@ $(document).ready(function(){
         keyListener();
         
         var a = setInterval(function(e) {
-            myGame.board.clearBoard();
             myGame.board.drawBoard();
             //lemming
-            
             myGame.player1.drawPlayer();
-           
             myGame.army1.moveArmy();
-            // myGame.army2.moveArmy();
-            // myGame.army3.moveArmy();
             //game over
+            myGame.army1.gameOver();
             myGame.player1.gameOver();
-            //win
-            myGame.player1.winGame();
+            
             score();
             followLemming();
         },1000/fps)
@@ -58,11 +54,21 @@ function keyListener(){
 }
 // 
 function followLemming(){
-  
         if(myGame.player1.position[0].x === myGame.army1.posX) {
           console.log("entra2");
           myGame.army1.ArmyDig();
         } else {
             return;
         }
+}
+
+function score() {
+    totalScore = myGame.army1.points + myGame.player1.points;
+    if (totalScore === 2){
+        console.log(totalScore)
+        $(".win").css("opacity", "100");
+        $(".win p").text(`Score: ${totalScore}`);
+        $("#score").text(`Score: ${totalScore}`);
+    }
+
 }
