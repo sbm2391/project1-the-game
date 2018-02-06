@@ -53,7 +53,7 @@ if (x >= 30 && x <= 760) {
     this.ctx.fillStyle="#3D7D29";
     this.ctx.fillRect(x + i,196,4,4); 
     } 
-  /*glass 2*/
+  //grass 2
      for(var i = 0; i < 740; i+=20) {
     this.ctx.fillStyle="#3D7D29";
     this.ctx.fillRect(x + i,410,10,10); 

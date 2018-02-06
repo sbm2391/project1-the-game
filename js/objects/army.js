@@ -42,8 +42,7 @@ Army.prototype.moveArmy = function (){
                 this.posX-=1
             }
         } else if (this.direction ==="right") {
-            
-            if(this.posX === 740) {
+            if(this.posX === 740 || (this.posY > 360 && this.posX === 360)) {
                 this.direction ="left"
                 this.drawArmyLeft();
             } else {
