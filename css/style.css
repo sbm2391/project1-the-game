@@ -15,7 +15,7 @@ body {
 h1 {
     width: 100vw;
     text-align: center;
-    margin: 40px 0 0 0;
+    margin: 20px 0 0 0;
 }
 
 section{
@@ -53,7 +53,8 @@ button {
 #control {
     margin: 10px auto 0 auto;
     box-sizing: border-box;
-    width: 600px;
+    min-width: 600px;
+    max-width: 800px;
     padding: 2vh 5vw;
     min-width: 400px;
     display: flex;
@@ -62,7 +63,6 @@ button {
     border: black solid 2px;
     border-radius: 25px;
 }
-
 #control div {
     border: black solid 2px;
     width: 100px;
@@ -97,4 +97,8 @@ canvas {
 }
 .background-win {
     position: relative;
+}
+
+.display-none{
+    display: none;
 }
