@@ -15,13 +15,16 @@ $(document).ready(function(){
         myMusic = new Audio("music/background-music.mp3");
         myMusic.loop = true;
         myMusic.volume = 0.3;
-        myMusic.play();
+        //myMusic.play(); -> descomentar
         //controls
         keyListener();
         //army
         army();
         var a = setInterval(function(e) {
             myGame.board.drawBoard1();
+            //myGame.board.drawBoard2();
+            //myGame.board.drawBoard3();
+            //myGame.board.drawBoard4();
             //lemming
             myGame.player1.drawPlayer();
             startArmy();

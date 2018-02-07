@@ -1,104 +1,170 @@
+
 function Board(canvas,width,height) {
     this.height = height;
     this.width = width;
     this.ctx = canvas;
-
-}
-
-Board.prototype.clearBoard = function (){
-  this.ctx.clearRect(0,0,this.width,this.height)
 }
 
 Board.prototype.drawBoard1 = function() {
-//marco
-//cielo
-this.ctx.fillStyle="#00A1F1";
-this.ctx.fillRect(60,0,90,30);
-//marco cafe
-this.ctx.fillStyle="#E88E0C";
-this.ctx.fillRect(0,0,60,30);
-this.ctx.fillRect(150,0,650,30);
-this.ctx.fillRect(0,0,30,450);
-this.ctx.fillRect(770,0,30,450);
-this.ctx.fillStyle="#96989A";
-this.ctx.fillRect(0,420,800,30);
-this.ctx.fillStyle="#8A4B07";
-this.ctx.fillRect(30,30,740,390);
+    //marco
+    //cielo
+    this.ctx.fillStyle="#00A1F1";
+    this.ctx.fillRect(60,0,90,30);
+    //marco cafe
+    this.ctx.fillStyle="#E88E0C";
+    this.ctx.fillRect(0,0,60,30);
+    this.ctx.fillRect(150,0,650,30);
+    this.ctx.fillRect(0,420,800,30);
+    this.ctx.fillStyle="#8A4B07";
+    this.ctx.fillRect(30,30,740,390);
+    
+    //background
+    this.ctx.fillStyle="#8A4B07";
+    this.ctx.fillRect(30,30,740,180);
+    //items
+    this.row1 = new Row(canvas,0,210,800,30,"#E88E0C");    
+    this.grass1 = new Grass(canvas,30,190,"#5BBB3D","#3D7D29", 740);
+    this.grass2 = new Grass(canvas,30,400,"#5BBB3D","#3D7D29", 740);
+    this.col1m = new Column(canvas,385,210,30,210,"#E88E0C");
+    this.door = new Door(canvas,700,320,60,100);
+    this.col1 = new Column(canvas,0,0,30,450,"#E88E0C");
+    this.col2 = new Column(canvas,770,0,30,450,"#E88E0C");
+    this.row2 = new Row(canvas,0,420,800,30,"#96989A"); 
+    //gap
+    console.log(myGame.player1)
+    if(myGame.player1.isDiggin){
+        this.ctx.fillStyle="#8A4B07";
+        this.ctx.fillRect(myGame.player1.position[0].x - 4,  myGame.player1.position[0].y + 20,25,65);
+      }
+    }
+    
+    Board.prototype.drawBoard2 = function() {
+        //marco
+        //cielo
+        this.ctx.fillStyle="#00A1F1";
+        this.ctx.fillRect(60,0,90,30);
+        //marco cafe
+        this.ctx.fillStyle="#E88E0C";
+        this.ctx.fillRect(0,0,60,30);
+        this.ctx.fillRect(150,0,650,30);
+        this.ctx.fillRect(0,420,800,30);
+        this.ctx.fillStyle="#8A4B07";
+        this.ctx.fillRect(30,30,740,390);
+        //background
+        this.ctx.fillStyle="#8A4B07";
+        this.ctx.fillRect(30,30,740,180);
+        //cielo player
+        this.ctx.fillStyle="#00A1F1";
+        this.ctx.fillRect(650,0,90,30);
+        //items
+        //marcos
+        this.col1 = new Column(canvas,0,0,30,450,"#E88E0C");
+        this.col2 = new Column(canvas,770,0,30,450,"#E88E0C");
+        //rows
+        this.row1metal = new Row(canvas,30,130,330,30,"#96989A"); 
+        this.row1ground = new Row(canvas,360,130,410,30,"#E88E0C"); 
+        this.row3 = new Row(canvas,0,420,800,30,"#96989A"); 
+        this.row2ground = new Row(canvas,0,280,500,30,"#E88E0C"); 
+        this.row2metal = new Row(canvas,500,280,270,30,"#96989A");
+        //grass
+        this.grass1 = new Grass(canvas,30,110,"#5BBB3D","#3D7D29", 740);
+        this.grass2 = new Grass(canvas,30,260,"#5BBB3D","#3D7D29", 740);
+        this.grass3 = new Grass(canvas,30,400,"#5BBB3D","#3D7D29", 740);
+        
+        //cols
+        this.col1metal = new Column(canvas,330,30,30,100,"#96989A");
+        this.col21metal = new Column(canvas,300,160,30,120,"#96989A");
+        this.col22metal = new Column(canvas,500,160,30,120,"#96989A");
+        this.col3metal = new Column(canvas,470,310,30,120,"#96989A");
+        //door
+        this.door = new Door(canvas,700,320,60,100);
 
-//background
-this.ctx.fillStyle="#8A4B07";
-this.ctx.fillRect(30,30,740,180);
-//Grass
-var x=30
-if (x >= 30 && x <= 760) {
-    for(var i = 0; i < 740; i+=20) {
-        this.ctx.fillStyle="#3D7D29";
-        this.ctx.fillRect(x + i,200,10,10); 
     }
- 
-  for(var i = 10; i < 740; i+=20) {
-    this.ctx.fillStyle="#5BBB3D";
-    this.ctx.fillRect(x + i,200,10,10); 
-    }
- 
-  for(var i = 10; i < 740; i+=20) {
-    this.ctx.fillStyle="#3D7D29";
-    this.ctx.fillRect(x + i,190,10,10); 
-    }
- 
-  for(var i = 6; i < 740; i+=20) {
-    this.ctx.fillStyle="#3D7D29";
-    this.ctx.fillRect(x + i,196,4,4); 
-    }
-  for(var i = 20; i < 740; i+=20) {
-    this.ctx.fillStyle="#3D7D29";
-    this.ctx.fillRect(x + i,196,4,4); 
-    } 
-  //grass 2
-     for(var i = 0; i < 740; i+=20) {
-    this.ctx.fillStyle="#3D7D29";
-    this.ctx.fillRect(x + i,410,10,10); 
-    }
- 
-  for(var i = 10; i < 740; i+=20) {
-    this.ctx.fillStyle="#5BBB3D";
-    this.ctx.fillRect(x + i,410,10,10); 
-    }
- 
-  for(var i = 10; i < 740; i+=20) {
-    this.ctx.fillStyle="#3D7D29";
-    this.ctx.fillRect(x + i,400,10,10); 
-    }
- 
-  for(var i = 6; i < 740; i+=20) {
-    this.ctx.fillStyle="#3D7D29";
-    this.ctx.fillRect(x + i,406,4,4); 
-    }
-  for(var i = 20; i < 740; i+=20) {
-    this.ctx.fillStyle="#3D7D29";
-    this.ctx.fillRect(x + i,406,4,4); 
-    }  
-}
-//inside
-//ground
-this.ctx.fillStyle="#E88E0C";
-this.ctx.fillRect(0,210,800,30);
-this.ctx.fillRect(385,210,30,210);
-//door
-this.ctx.fillStyle="#542E04";
-this.ctx.fillRect(690,310,80,110);
-this.ctx.fillStyle="#00A1F1";
-this.ctx.fillRect(700,320,60,100);
 
-//gap
-if(myGame.player1.isDiggin){
-  this.ctx.fillStyle="#8A4B07";
-  
-
-  this.ctx.fillRect(myGame.player1.position[0].x - 4,  myGame.player1.position[0].y + 20,25,65);
-}
-
-}
-
-//Nivel 2 board
-
+    Board.prototype.drawBoard3 = function() {
+        //marco
+        //cielo
+        this.ctx.fillStyle="#00A1F1";
+        this.ctx.fillRect(60,0,90,30);
+        //marco cafe
+        this.ctx.fillStyle="#E88E0C";
+        this.ctx.fillRect(0,0,60,30);
+        this.ctx.fillRect(150,0,650,30);
+        this.ctx.fillRect(0,420,800,30);
+        this.ctx.fillStyle="#8A4B07";
+        this.ctx.fillRect(30,30,740,390);
+        //background
+        this.ctx.fillStyle="#8A4B07";
+        this.ctx.fillRect(30,30,740,180);
+        //cielo player
+        this.ctx.fillStyle="#00A1F1";
+        this.ctx.fillRect(650,0,90,30);
+        //items
+        //marcos
+        this.col1 = new Column(canvas,0,0,30,450,"#E88E0C");
+        this.col2 = new Column(canvas,770,0,30,450,"#E88E0C");
+        //grass
+        this.grass1 = new Grass(canvas,30,110,"#5BBB3D","#3D7D29", 740);
+        this.grass2 = new Grass(canvas,30,260,"#5BBB3D","#3D7D29", 740);
+        this.lava = new Lava(canvas,30,400,"#7D1702","#EB2B04",660);
+        //door
+        this.door = new Door(canvas,700,320,60,100);
+        //rows
+        this.row1metal = new Row(canvas,30,130,330,30,"#96989A"); 
+        this.row1ground = new Row(canvas,360,130,410,30,"#E88E0C");
+        this.row2ground = new Row(canvas,0,280,500,30,"#E88E0C"); 
+        this.row2metal = new Row(canvas,500,280,270,30,"#96989A");
+        this.row31metal = new Row(canvas,100,355,150,30,"#96989A");
+        this.row32metal = new Row(canvas,350,355,340,30,"#96989A");
+        //cols
+        this.col1metal = new Column(canvas,330,30,30,100,"#96989A");
+        this.col21metal = new Column(canvas,300,160,30,120,"#96989A");
+        this.col22metal = new Column(canvas,500,160,30,120,"#96989A");
+      
+    }
+    
+    Board.prototype.drawBoard4 = function() {
+        //marco
+        //cielo
+        this.ctx.fillStyle="#00A1F1";
+        this.ctx.fillRect(60,0,90,30);
+        //marco cafe
+        this.ctx.fillStyle="#E88E0C";
+        this.ctx.fillRect(0,0,60,30);
+        this.ctx.fillRect(150,0,650,30);
+        this.ctx.fillRect(0,420,800,30);
+        this.ctx.fillStyle="#8A4B07";
+        this.ctx.fillRect(30,30,740,390);
+        //background
+        this.ctx.fillStyle="#8A4B07";
+        this.ctx.fillRect(30,30,740,180);
+        //cielo player
+        this.ctx.fillStyle="#00A1F1";
+        this.ctx.fillRect(650,0,90,30);
+        //items
+        //marcos
+        this.col1 = new Column(canvas,0,0,30,450,"#E88E0C");
+        this.col2 = new Column(canvas,770,0,30,450,"#E88E0C");
+        //grass
+        this.grass11 = new Grass(canvas,30,110,"#5BBB3D","#3D7D29", 350);
+        this.grass12 = new Grass(canvas,430,110,"#5BBB3D","#3D7D29", 340);
+        this.grass21 = new Grass(canvas,30,260,"#5BBB3D","#3D7D29", 310);
+        this.grass22 = new Grass(canvas,530,260,"#5BBB3D","#3D7D29", 240);
+        this.grass3 = new Grass(canvas,30,400,"#5BBB3D","#3D7D29", 740);
+        //lava
+        this.lava = new Lava(canvas,380,110,"#7D1702","#EB2B04",50);
+        this.lava = new Lava(canvas,340,260,"#7D1702","#EB2B04",160);
+        //rows
+        this.row1ground = new Row(canvas,30,130,740,30,"#E88E0C");
+        this.row2ground = new Row(canvas,0,280,500,30,"#E88E0C"); 
+        this.row2metal = new Row(canvas,500,280,270,30,"#96989A");
+        this.row3 = new Row(canvas,0,420,800,30,"#96989A"); 
+         //cols
+         this.col1metal = new Column(canvas,280,30,30,100,"#96989A");
+         this.col2metal = new Column(canvas,500,160,30,120,"#96989A");
+         this.col3metal = new Column(canvas,470,280,30,140,"#96989A");
+         //door
+        this.door = new Door(canvas,700,320,60,100);
+    }
+    
+    
