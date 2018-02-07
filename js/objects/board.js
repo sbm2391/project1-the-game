@@ -20,6 +20,7 @@ this.ctx.fillRect(0,0,60,30);
 this.ctx.fillRect(150,0,650,30);
 this.ctx.fillRect(0,0,30,450);
 this.ctx.fillRect(770,0,30,450);
+this.ctx.fillStyle="#96989A";
 this.ctx.fillRect(0,420,800,30);
 this.ctx.fillStyle="#8A4B07";
 this.ctx.fillRect(30,30,740,390);
