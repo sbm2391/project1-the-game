@@ -9,7 +9,6 @@ $(document).ready(function(){
 
     canvas = document.getElementById("board").getContext('2d');
     myGame = new Game(canvas); 
-    myGame.board.drawBoard1();
 
     $("#btn").on("click", function(){     
         //audio 
@@ -23,6 +22,7 @@ $(document).ready(function(){
         army();
         var a = setInterval(function(e) {
             myGame.board.drawBoard1();
+            
             //lemming
             myGame.player1.drawPlayer();
             startArmy();
