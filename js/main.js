@@ -22,7 +22,6 @@ $(document).ready(function(){
         army();
         var a = setInterval(function(e) {
             myGame.board.drawBoard1();
-            
             //lemming
             myGame.player1.drawPlayer();
             startArmy();
@@ -39,6 +38,8 @@ function army (){
         myGame.army.push(new Army (canvas, 100, -i));
     }  
 }
+
+
 
 function startArmy(){
    
