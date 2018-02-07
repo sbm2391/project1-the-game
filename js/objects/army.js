@@ -22,7 +22,7 @@ Army.prototype.gameOver = function (){
 Army.prototype.moveArmy = function (){
     
     //console.log(this)
-    if(this.posY <= 155 || this.posY > 240 && this.posY < 366) {
+    if(this.posY <= (myGame.board.row1.posY- 55) || this.posY > (myGame.board.row1.posY + 30) && this.posY < (myGame.board.row2.posY-52)) {
         /*leming*/
         this.drawArmy();
         this.posY+=3;

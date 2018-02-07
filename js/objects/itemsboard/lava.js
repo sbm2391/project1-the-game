@@ -1,9 +1,10 @@
 function Lava(canvas, posX, posY, color1, color2) {
     this.posX = posX;
-    this.posY = posy;
+    this.posY = posY;
     this.colorInside = color1;
     this.colorOutside = color2;
     this.ctx = canvas;
+    this.drawLava();
 }
 
 Lava.prototype.drawLava = function (){

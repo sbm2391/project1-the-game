@@ -13,7 +13,8 @@ function Player (canvas, posX, posY) {
 
 Player.prototype.drawPlayer = function (){
     if (!this.visible) return;
-    if(this.posY <= 155 || this.posY > 240 && this.posY < 366) {
+    console.log(myGame.board.row1);
+    if(this.posY <= (myGame.board.row1.posY- 55) || this.posY > (myGame.board.row1.posY + 30) && this.posY < (myGame.board.row2.posY-52)) {
         /*leming*/
         this.drawLemming();
         this.posY+=3;
@@ -32,11 +33,11 @@ Player.prototype.drawPlayer = function (){
 
 //Game Over
 Player.prototype.gameOver = function (){
-    if (this.posY > 366 && this.posX < 360) {
+    if (this.posY > (myGame.board.row2.posY-54) && this.posX < (myGame.board.col1m.posX -25)) {
         $(".win").css("opacity", "100");
         $(".win h2").text(`You lost! try again`);
         $(".win p").text(`Score: ${this.points}`);
-    } else  if (this.posY > 308 && this.posX > 710) {
+    } else  if (this.posY > (myGame.board.door.posY - 12) && this.posX > (myGame.board.door.posX + 10)) {
         this.points=1;
         this.visible = false;
         console.log("player points" + this.points)
@@ -47,7 +48,7 @@ Player.prototype.gameOver = function (){
 
 //move lemmings 
 Player.prototype.moveRight = function (){
-    if(this.posX <  745){
+    if(this.posX <  (myGame.board.col2.posX - 26)){
         this.posX += 10;
         this.direction="right"
     } else {
@@ -58,11 +59,11 @@ Player.prototype.moveRight = function (){
 
 
 Player.prototype.moveLeft = function (){
-    if(this.posY < 158 && this.posX > 40){
+    if(this.posY < (myGame.board.row1.posY - 52) && this.posX > (myGame.board.col1.posX + 40)){
         this.posX -= 10;
         this.direction="left"
 
-    }else if(this.posY < 400 && this.posX > 420){
+    }else if(this.posY < (myGame.board.row2.posY-20) && this.posX > (myGame.board.col1m.posX + 35)){
         this.posX -= 10;
         this.direction="left"
     } else {
@@ -71,14 +72,12 @@ Player.prototype.moveLeft = function (){
 }
 
 Player.prototype.dig = function (){
-    if (this.posY < 250 && (this.posX < 360 || this.posX > 420)) {
+    if (this.posY < (myGame.board.row1.posY + 40) && (this.posX <  (myGame.board.col1m.posX - 25) || this.posX > (myGame.board.col1m.posX + 25))) {
         this.isDiggin = true;
         this.position.push({x:this.posX,y:this.posY})
         this.posY += 5;
         this.direction="up"
     } else { 
-        
-        //this.isDiggin = false;
         return;
     }
         
