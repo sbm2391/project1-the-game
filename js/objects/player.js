@@ -12,37 +12,42 @@ function Player (canvas, posX, posY) {
 }
 
 Player.prototype.drawPlayer = function (){
+
     if (!this.visible) return;
-    console.log(myGame.board.row1);
-    if(this.posY <= (myGame.board.row1.posY- 55) || this.posY > (myGame.board.row1.posY + 30) && this.posY < (myGame.board.row2.posY-52)) {
-        /*leming*/
-        this.drawLemming();
-        this.posY+=3;
-    } else  {
-        if (this.direction==="left") {
+    console.log(this.posX)
+    this.downPlayer(myGame.board.row1)
+    this.dig(myGame.board.row1)
+}
+
+
+Player.prototype.downPlayer = function (row){
+    if(this.posY >= (row.posY-55) && (row.posX<this.posX)&&(this.posX < (row.posX + row.width))){
+    if (this.direction==="left") {
             this.drawLemmingLeft();
         } else if (this.direction==="right") {
             this.drawLemmingRight();
         } else {
             this.drawLemming();
         }
-        
-    } 
-   
+    
+    }else {
+        console.log("tengo q entrar aqui")
+        this.drawLemming();
+        this.posY+=3;
+        }
 }
-
 //Game Over
 Player.prototype.gameOver = function (){
-    if (this.posY > (myGame.board.row2.posY-54) && this.posX < (myGame.board.col1m.posX -25)) {
-        $(".win").css("opacity", "100");
-        $(".win h2").text(`You lost! try again`);
-        $(".win p").text(`Score: ${this.points}`);
-    } else  if (this.posY > (myGame.board.door.posY - 12) && this.posX > (myGame.board.door.posX + 10)) {
-        this.points=1;
-        this.visible = false;
-        console.log("player points" + this.points)
-        $("#score").text(`Score: ${totalScore}`);
-    } 
+    // if (this.posY > (myGame.board.row2.posY-54) && this.posX < (myGame.board.col1m.posX -25)) {
+    //     $(".win").css("opacity", "100");
+    //     $(".win h2").text(`You lost! try again`);
+    //     $(".win p").text(`Score: ${this.points}`);
+    // } else  if (this.posY > (myGame.board.door.posY - 12) && this.posX > (myGame.board.door.posX + 10)) {
+    //     this.points=1;
+    //     this.visible = false;
+    //     console.log("player points" + this.points)
+    //     $("#score").text(`Score: ${totalScore}`);
+    // } 
 }
 
 
@@ -70,9 +75,8 @@ Player.prototype.moveLeft = function (){
         return;
     }
 }
-
-Player.prototype.dig = function (){
-    if (this.posY < (myGame.board.row1.posY + 40) && (this.posX <  (myGame.board.col1m.posX - 25) || this.posX > (myGame.board.col1m.posX + 25))) {
+Player.prototype.dig = function (row){
+    if (this.posY < (row.posY + 40)) {
         this.isDiggin = true;
         this.position.push({x:this.posX,y:this.posY})
         this.posY += 5;
@@ -80,8 +84,18 @@ Player.prototype.dig = function (){
     } else { 
         return;
     }
+}
+// Player.prototype.dig = function (){
+//     if (this.posY < (myGame.board.row1.posY + 40) && (this.posX <  (myGame.board.col1m.posX - 25) || this.posX > (myGame.board.col1m.posX + 25))) {
+//         this.isDiggin = true;
+//         this.position.push({x:this.posX,y:this.posY})
+//         this.posY += 5;
+//         this.direction="up"
+//     } else { 
+//         return;
+//     }
         
- }
+//  }
 //draw lemmings
 Player.prototype.drawLemming = function (){
     //leming-head

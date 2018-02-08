@@ -21,9 +21,9 @@ $(document).ready(function(){
         //army
         army();
         var a = setInterval(function(e) {
-            myGame.board.drawBoard1();
+            //myGame.board.drawBoard1();
             //myGame.board.drawBoard2();
-            //myGame.board.drawBoard3();
+            myGame.board.drawBoard3();
             //myGame.board.drawBoard4();
             //lemming
             myGame.player1.drawPlayer();

@@ -22,14 +22,14 @@ Board.prototype.drawBoard1 = function() {
     this.ctx.fillStyle="#8A4B07";
     this.ctx.fillRect(30,30,740,180);
     //items
-    this.row1 = new Row(canvas,0,210,800,30,"#E88E0C");    
+    this.row1 = new Row(canvas,0,210,800,30,"ground");    
     this.grass1 = new Grass(canvas,30,190,"#5BBB3D","#3D7D29", 740);
     this.grass2 = new Grass(canvas,30,400,"#5BBB3D","#3D7D29", 740);
-    this.col1m = new Column(canvas,385,210,30,210,"#E88E0C");
+    this.col1m = new Column(canvas,385,210,30,210,"ground");
     this.door = new Door(canvas,700,320,60,100);
-    this.col1 = new Column(canvas,0,0,30,450,"#E88E0C");
-    this.col2 = new Column(canvas,770,0,30,450,"#E88E0C");
-    this.row2 = new Row(canvas,0,420,800,30,"#96989A"); 
+    this.col1 = new Column(canvas,0,0,30,450,"ground");
+    this.col2 = new Column(canvas,770,0,30,450,"ground");
+    this.row2 = new Row(canvas,0,420,800,30,"metal"); 
     //gap
     console.log(myGame.player1)
     if(myGame.player1.isDiggin){
@@ -58,24 +58,25 @@ Board.prototype.drawBoard1 = function() {
         this.ctx.fillRect(650,0,90,30);
         //items
         //marcos
-        this.col1 = new Column(canvas,0,0,30,450,"#E88E0C");
-        this.col2 = new Column(canvas,770,0,30,450,"#E88E0C");
+        this.col1 = new Column(canvas,0,0,30,450,"ground");
+        this.col2 = new Column(canvas,770,0,30,450,"ground");
         //rows
-        this.row1metal = new Row(canvas,30,130,330,30,"#96989A"); 
-        this.row1ground = new Row(canvas,360,130,410,30,"#E88E0C"); 
-        this.row3 = new Row(canvas,0,420,800,30,"#96989A"); 
-        this.row2ground = new Row(canvas,0,280,500,30,"#E88E0C"); 
-        this.row2metal = new Row(canvas,500,280,270,30,"#96989A");
+        
+        this.row1 = new Row(canvas,0,130,800,30,"ground");
+        this.row1metal = new Row(canvas,30,130,330,30,"metal");  
+        this.row3 = new Row(canvas,0,420,800,30,"metal"); 
+        this.row2ground = new Row(canvas,0,280,500,30,"ground"); 
+        this.row2metal = new Row(canvas,500,280,270,30,"metal");
         //grass
         this.grass1 = new Grass(canvas,30,110,"#5BBB3D","#3D7D29", 740);
         this.grass2 = new Grass(canvas,30,260,"#5BBB3D","#3D7D29", 740);
         this.grass3 = new Grass(canvas,30,400,"#5BBB3D","#3D7D29", 740);
         
         //cols
-        this.col1metal = new Column(canvas,330,30,30,100,"#96989A");
-        this.col21metal = new Column(canvas,300,160,30,120,"#96989A");
-        this.col22metal = new Column(canvas,500,160,30,120,"#96989A");
-        this.col3metal = new Column(canvas,470,310,30,120,"#96989A");
+        this.col1metal = new Column(canvas,330,30,30,100,"metal");
+        this.col21metal = new Column(canvas,300,160,30,120,"metal");
+        this.col22metal = new Column(canvas,500,160,30,120,"metal");
+        this.col3metal = new Column(canvas,470,310,30,120,"metal");
         //door
         this.door = new Door(canvas,700,320,60,100);
 
@@ -101,8 +102,8 @@ Board.prototype.drawBoard1 = function() {
         this.ctx.fillRect(650,0,90,30);
         //items
         //marcos
-        this.col1 = new Column(canvas,0,0,30,450,"#E88E0C");
-        this.col2 = new Column(canvas,770,0,30,450,"#E88E0C");
+        this.col1 = new Column(canvas,0,0,30,450,"ground");
+        this.col2 = new Column(canvas,770,0,30,450,"ground");
         //grass
         this.grass1 = new Grass(canvas,30,110,"#5BBB3D","#3D7D29", 740);
         this.grass2 = new Grass(canvas,30,260,"#5BBB3D","#3D7D29", 740);
@@ -110,16 +111,19 @@ Board.prototype.drawBoard1 = function() {
         //door
         this.door = new Door(canvas,700,320,60,100);
         //rows
-        this.row1metal = new Row(canvas,30,130,330,30,"#96989A"); 
-        this.row1ground = new Row(canvas,360,130,410,30,"#E88E0C");
-        this.row2ground = new Row(canvas,0,280,500,30,"#E88E0C"); 
-        this.row2metal = new Row(canvas,500,280,270,30,"#96989A");
-        this.row31metal = new Row(canvas,100,355,150,30,"#96989A");
-        this.row32metal = new Row(canvas,350,355,340,30,"#96989A");
+       
+        //en prueba
+        this.row1 = new Row(canvas,30,130,740,30,"ground");
+        this.row1metal = new Row(canvas,30,130,330,30,"metal");
+
+        this.row2 = new Row(canvas,30,280,740,30,"ground"); 
+        this.row2metal = new Row(canvas,500,280,270,30,"metal");
+        this.row31metal = new Row(canvas,100,355,150,30,"metal");
+        this.row32metal = new Row(canvas,350,355,340,30,"metal");
         //cols
-        this.col1metal = new Column(canvas,330,30,30,100,"#96989A");
-        this.col21metal = new Column(canvas,300,160,30,120,"#96989A");
-        this.col22metal = new Column(canvas,500,160,30,120,"#96989A");
+        this.col1metal = new Column(canvas,330,30,30,100,"metal");
+        this.col21metal = new Column(canvas,300,160,30,120,"metal");
+        this.col22metal = new Column(canvas,500,160,30,120,"metal");
       
     }
     
@@ -143,8 +147,8 @@ Board.prototype.drawBoard1 = function() {
         this.ctx.fillRect(650,0,90,30);
         //items
         //marcos
-        this.col1 = new Column(canvas,0,0,30,450,"#E88E0C");
-        this.col2 = new Column(canvas,770,0,30,450,"#E88E0C");
+        this.col1 = new Column(canvas,0,0,30,450,"ground");
+        this.col2 = new Column(canvas,770,0,30,450,"ground");
         //grass
         this.grass11 = new Grass(canvas,30,110,"#5BBB3D","#3D7D29", 350);
         this.grass12 = new Grass(canvas,430,110,"#5BBB3D","#3D7D29", 340);
@@ -155,14 +159,14 @@ Board.prototype.drawBoard1 = function() {
         this.lava = new Lava(canvas,380,110,"#7D1702","#EB2B04",50);
         this.lava = new Lava(canvas,340,260,"#7D1702","#EB2B04",160);
         //rows
-        this.row1ground = new Row(canvas,30,130,740,30,"#E88E0C");
-        this.row2ground = new Row(canvas,0,280,500,30,"#E88E0C"); 
-        this.row2metal = new Row(canvas,500,280,270,30,"#96989A");
-        this.row3 = new Row(canvas,0,420,800,30,"#96989A"); 
+        this.row1ground = new Row(canvas,30,130,740,30,"ground");
+        this.row2ground = new Row(canvas,0,280,500,30,"ground"); 
+        this.row2metal = new Row(canvas,500,280,270,30,"metal");
+        this.row3 = new Row(canvas,0,420,800,30,"metal"); 
          //cols
-         this.col1metal = new Column(canvas,280,30,30,100,"#96989A");
-         this.col2metal = new Column(canvas,500,160,30,120,"#96989A");
-         this.col3metal = new Column(canvas,470,280,30,140,"#96989A");
+         this.col1metal = new Column(canvas,280,30,30,100,"metal");
+         this.col2metal = new Column(canvas,500,160,30,120,"metal");
+         this.col3metal = new Column(canvas,470,280,30,140,"metal");
          //door
         this.door = new Door(canvas,700,320,60,100);
     }
