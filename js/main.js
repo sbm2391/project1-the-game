@@ -15,16 +15,13 @@ $(document).ready(function(){
         myMusic = new Audio("music/background-music.mp3");
         myMusic.loop = true;
         myMusic.volume = 0.3;
-        //myMusic.play(); -> descomentar
+        myMusic.play();
         //controls
         keyListener();
         //army
         army();
         var a = setInterval(function(e) {
-            //myGame.board.drawBoard1();
-            myGame.board.drawBoard2();
-            //myGame.board.drawBoard3();
-            //myGame.board.drawBoard4();
+            myGame.board.drawBoard1();
             //lemming
             myGame.player1.drawPlayer();
             startArmy();
@@ -82,8 +79,7 @@ function keyListener(){
                 myGame.player1.moveLeft();
                 break;
             case 40: //down
-            
-                myGame.player1.dig(myGame.board.row1);
+                myGame.player1.dig();
                 break;
             default:
                 break;
