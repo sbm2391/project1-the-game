@@ -15,25 +15,33 @@ Player.prototype.drawPlayer = function (){
 
     if (!this.visible) return;
     console.log(this.posX)
-    this.downPlayer(myGame.board.row1)
-    this.dig(myGame.board.row1)
-}
-
-
-Player.prototype.downPlayer = function (row){
-    if(this.posY >= (row.posY-55) && (row.posX<this.posX)&&(this.posX < (row.posX + row.width))){
-    if (this.direction==="left") {
+    ;
+    if (this.downPlayer(myGame.board.row11) ||this.downPlayer(myGame.board.row12)) {
+        if (this.direction==="left") {
             this.drawLemmingLeft();
         } else if (this.direction==="right") {
             this.drawLemmingRight();
         } else {
             this.drawLemming();
         }
-    
-    }else {
+    }else{
         console.log("tengo q entrar aqui")
         this.drawLemming();
         this.posY+=3;
+    }
+    
+   if (this.isDiggin) {
+    this.downPlayer(myGame.board.row21);
+
+   }
+}
+
+
+Player.prototype.downPlayer = function (row){
+    if(this.posY >= (row.posY-55) && (row.posX<this.posX)&&(this.posX < (row.posX + row.width))){
+        return true
+    }else {
+        return false
         }
 }
 //Game Over
@@ -76,11 +84,13 @@ Player.prototype.moveLeft = function (){
     }
 }
 Player.prototype.dig = function (row){
-    if (this.posY < (row.posY + 40)) {
+console.log(row)
+    if (row.material === "ground") {
         this.isDiggin = true;
         this.position.push({x:this.posX,y:this.posY})
         this.posY += 5;
         this.direction="up"
+        console.log(this.position)
     } else { 
         return;
     }

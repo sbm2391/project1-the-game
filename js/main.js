@@ -22,8 +22,8 @@ $(document).ready(function(){
         army();
         var a = setInterval(function(e) {
             //myGame.board.drawBoard1();
-            //myGame.board.drawBoard2();
-            myGame.board.drawBoard3();
+            myGame.board.drawBoard2();
+            //myGame.board.drawBoard3();
             //myGame.board.drawBoard4();
             //lemming
             myGame.player1.drawPlayer();
@@ -82,7 +82,8 @@ function keyListener(){
                 myGame.player1.moveLeft();
                 break;
             case 40: //down
-                myGame.player1.dig();
+            
+                myGame.player1.dig(myGame.board.row1);
                 break;
             default:
                 break;

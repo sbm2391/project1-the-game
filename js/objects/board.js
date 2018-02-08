@@ -22,14 +22,14 @@ Board.prototype.drawBoard1 = function() {
     this.ctx.fillStyle="#8A4B07";
     this.ctx.fillRect(30,30,740,180);
     //items
-    this.row1 = new Row(canvas,0,210,800,30,"ground");    
+    this.row11 = new Row(canvas,0,210,800,30,"ground");    
     this.grass1 = new Grass(canvas,30,190,"#5BBB3D","#3D7D29", 740);
     this.grass2 = new Grass(canvas,30,400,"#5BBB3D","#3D7D29", 740);
     this.col1m = new Column(canvas,385,210,30,210,"ground");
     this.door = new Door(canvas,700,320,60,100);
     this.col1 = new Column(canvas,0,0,30,450,"ground");
     this.col2 = new Column(canvas,770,0,30,450,"ground");
-    this.row2 = new Row(canvas,0,420,800,30,"metal"); 
+    this.row21 = new Row(canvas,0,420,800,30,"metal"); 
     //gap
     console.log(myGame.player1)
     if(myGame.player1.isDiggin){
@@ -62,10 +62,11 @@ Board.prototype.drawBoard1 = function() {
         this.col2 = new Column(canvas,770,0,30,450,"ground");
         //rows
         
-        this.row1 = new Row(canvas,0,130,800,30,"ground");
-        this.row1metal = new Row(canvas,30,130,330,30,"metal");  
+        this.row11 = new Row(canvas,30,130,330,30,"metal");  
+        this.row12 = new Row(canvas,360,130,800,30,"ground");
+        //me quedé aquí !!!!!!!!
         this.row3 = new Row(canvas,0,420,800,30,"metal"); 
-        this.row2ground = new Row(canvas,0,280,500,30,"ground"); 
+        this.row2 = new Row(canvas,0,280,500,30,"ground"); 
         this.row2metal = new Row(canvas,500,280,270,30,"metal");
         //grass
         this.grass1 = new Grass(canvas,30,110,"#5BBB3D","#3D7D29", 740);
