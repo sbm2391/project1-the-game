@@ -37,6 +37,7 @@ Player.prototype.gameOver = function (){
         $(".win").css("opacity", "100");
         $(".win h2").text(`You lost! try again`);
         $(".win p").text(`Score: ${this.points}`);
+        $("#next-level").css("display", "none");
     } else  if (this.posY > (myGame.board.door.posY - 12) && this.posX > (myGame.board.door.posX + 10)) {
         this.points=1;
         this.visible = false;

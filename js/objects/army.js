@@ -15,6 +15,7 @@ Army.prototype.gameOver = function (){
         $(".win").css("opacity", "100");
         $(".win h2").text(`You lost! try again`);
         $(".win p").text(`Score: ${this.points}`);
+       
     } 
 }
 
