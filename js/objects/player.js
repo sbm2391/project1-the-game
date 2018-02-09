@@ -14,8 +14,8 @@ function Player (canvas, posX, posY) {
 Player.prototype.drawPlayer = function (){
    
     if (!this.visible) return;
-    console.log(myGame.board.row1);
-    if(this.posY <= (myGame.board.row1.posY- 55) || this.posY > (myGame.board.row1.posY + 30) && this.posY < (myGame.board.row2.posY-52)) {
+    console.log(myGame.board.row11);
+    if(this.posY <= (myGame.board.row11.posY- 55) || this.posY > (myGame.board.row11.posY + 30) && this.posY < (myGame.board.row21.posY-52)) {
         /*leming*/
         this.drawLemming();
         this.posY+=3;
@@ -31,29 +31,10 @@ Player.prototype.drawPlayer = function (){
     } 
    
 }
-//nivel2
-Player.prototype.drawPlayerBoard2 = function (){
-
-    if (!this.visible) return;
-    if(this.posY <= (myGame.board.row1.posY- 55) || this.posY > (myGame.board.row1.posY + 30) && this.posY < (myGame.board.row2.posY-52)) {
-        /*leming*/
-        this.drawLemming();
-        this.posY+=3;
-    } else  {
-        if (this.direction==="left") {
-            this.drawLemmingLeft();
-        } else if (this.direction==="right") {
-            this.drawLemmingRight();
-        } else {
-            this.drawLemming();
-        }
-        
-    } 
-}
 
 //Game Over
 Player.prototype.gameOver = function (){
-    if (this.posY > (myGame.board.row2.posY-54) && this.posX < (myGame.board.col1m.posX -25)) {
+    if (this.posY > (myGame.board.row21.posY-54) && this.posX < (myGame.board.col1m.posX -25)) {
         $(".win").css("opacity", "100");
         $(".win h2").text(`You lost! try again`);
         $(".win p").text(`Score: ${this.points}`);
@@ -79,20 +60,20 @@ Player.prototype.moveRight = function (){
 
 
 Player.prototype.moveLeft = function (){
-    if(this.posY < (myGame.board.row1.posY - 52) && this.posX > (myGame.board.col1.posX + 40)){
+    if(this.posY < (myGame.board.row11.posY - 52) && this.posX > (myGame.board.col1.posX + 40)){
         this.posX -= 10;
         this.direction="left"
 
-    }else if(this.posY < (myGame.board.row2.posY-20) && this.posX > (myGame.board.col1m.posX + 35)){
+    }else if(this.posY < (myGame.board.row21.posY-20) && this.posX > (myGame.board.col1m.posX + 35)){
         this.posX -= 10;
         this.direction="left"
     } else {
         return;
     }
 }
-//nivel1
+
 Player.prototype.dig = function (){
-    if (this.posY < (myGame.board.row1.posY + 40) && (this.posX <  (myGame.board.col1m.posX - 25) || this.posX > (myGame.board.col1m.posX + 25))) {
+    if (this.posY < (myGame.board.row11.posY + 40) && (this.posX <  (myGame.board.col1m.posX - 25) || this.posX > (myGame.board.col1m.posX + 25))) {
         this.isDiggin = true;
         this.position.push({x:this.posX,y:this.posY})
         this.posY += 5;
@@ -103,8 +84,28 @@ Player.prototype.dig = function (){
         
  }
  //nivel2
+ 
+Player.prototype.drawPlayerBoard2 = function (){
+
+    if (!this.visible) return;
+    if(this.posY <= (myGame.board.row11.posY- 55) || (this.posY > (myGame.board.row11.posY + 30) && this.posY < (myGame.board.row21.posY-52)) || (this.posY > (myGame.board.row21.posY + 30) && this.posY < (myGame.board.row31.posY-52)) ){
+        /*leming*/
+        this.drawLemming();
+        this.posY+=3;
+    } else  {
+        if (this.direction==="left") {
+            this.drawLemmingLeft();
+        } else if (this.direction==="right") {
+            this.drawLemmingRight();
+        } else {
+            this.drawLemming();
+        }
+        
+    } 
+}
+
  Player.prototype.digBoard2 = function (){
-    if (this.posY < (myGame.board.row1.posY + 40) && (this.posX <  (myGame.board.col1m.posX - 25) || this.posX > (myGame.board.col1m.posX + 25))) {
+    if ((this.posY < (myGame.board.row12.posY + 40) && (this.posX >  (myGame.board.col11.posX))) || (this.posY < (myGame.board.row21.posY + 40) && (this.posX >  (myGame.board.col11.posX)))) {
         this.isDiggin = true;
         this.position.push({x:this.posX,y:this.posY})
         this.posY += 5;
@@ -114,6 +115,8 @@ Player.prototype.dig = function (){
     }
         
  }
+
+
 //draw lemmings
 Player.prototype.drawLemming = function (){
     //leming-head

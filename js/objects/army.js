@@ -10,7 +10,7 @@ function Army(canvas, posX, posY) {
 
 //Game Over
 Army.prototype.gameOver = function (){
-    if (this.posY > (myGame.board.row1.posY + 156) && this.posX < (myGame.board.col1m.posX - 25)) {
+    if (this.posY > (myGame.board.row11.posY + 156) && this.posX < (myGame.board.col1m.posX - 25)) {
         console.log("you lost the game!")
         $(".win").css("opacity", "100");
         $(".win h2").text(`You lost! try again`);
@@ -22,14 +22,14 @@ Army.prototype.gameOver = function (){
 Army.prototype.moveArmy = function (){
     
     //console.log(this)
-    if(this.posY <= (myGame.board.row1.posY- 55) || this.posY > (myGame.board.row1.posY + 30) && this.posY < (myGame.board.row2.posY-52)) {
+    if(this.posY <= (myGame.board.row11.posY- 55) || this.posY > (myGame.board.row11.posY + 30) && this.posY < (myGame.board.row21.posY-52)) {
         /*leming*/
         this.drawArmy();
         this.posY+=3;
     } else  {
         
         if (this.direction ==="left") {
-            if(this.posX === (myGame.board.col1.posX + 40) || (this.posY > (myGame.board.row1.posY + 150) && this.posX === (myGame.board.col1m.posX + 35))) {
+            if(this.posX === (myGame.board.col1.posX + 40) || (this.posY > (myGame.board.row11.posY + 150) && this.posX === (myGame.board.col1m.posX + 35))) {
                 this.direction ="right";
                 this.drawArmyRight();
             } else {
@@ -37,7 +37,7 @@ Army.prototype.moveArmy = function (){
                 this.posX-=1
             }
         } else if (this.direction ==="right") {
-            if(this.posX === (myGame.board.col2.posX - 30) || (this.posY > (myGame.board.row1.posY + 150) && this.posX === (myGame.board.col1m.posX - 25))) {
+            if(this.posX === (myGame.board.col2.posX - 30) || (this.posY > (myGame.board.row11.posY + 150) && this.posX === (myGame.board.col1m.posX - 25))) {
                 this.direction ="left"
                 this.drawArmyLeft();
             } else {
@@ -62,7 +62,7 @@ Army.prototype.moveArmy = function (){
 
 
 Army.prototype.ArmyDig = function (){
-    if (this.posY < (myGame.board.row1.posY + 40) && (this.posX < (myGame.board.col1m.posX + 25) || this.posX > (myGame.board.col1m.posX + 60))) {
+    if (this.posY < (myGame.board.row11.posY + 40) && (this.posX < (myGame.board.col1m.posX + 25) || this.posX > (myGame.board.col1m.posX + 60))) {
         //this.drawGround();
         this.posY += 2;
         this.direction="up"

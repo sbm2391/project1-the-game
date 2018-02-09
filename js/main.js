@@ -8,7 +8,7 @@ var totalScoreArmy=0;
 $(document).ready(function(){
 
     canvas = document.getElementById("board").getContext('2d');
-    nextLevel()
+    nextLevel();
 
     
 });
@@ -52,9 +52,9 @@ function nextLevel(){
         myMusic = new Audio("music/background-music.mp3");
         myMusic.loop = true;
         myMusic.volume = 0.3;
-        myMusic.play();
+        //myMusic.play();
         //controls
-        keyListener();
+        keyListener2();
         //army
         army();
         var a = setInterval(function(e) {
@@ -109,6 +109,34 @@ function keyListener(){
             case 40: //down
                 myGame.player1.dig();
                 break;
+            case 80: //Pick
+            //myGame.player1.prick();
+            break;
+            default:
+                break;
+        }
+    });
+
+    //function follow
+
+}
+
+//Funcion para escuchar eventos del teclado nivel2
+function keyListener2(){
+    document.addEventListener("keydown", function(e){
+        switch (e.keyCode) {
+            case 39: //->
+                myGame.player1.moveRight() 
+                break;
+            case 37: //<-
+                myGame.player1.moveLeft();
+                break;
+            case 40: //down
+                myGame.player1.digBoard2();
+                break;
+            case 80: //Pick
+            //myGame.player1.prick();
+            break;
             default:
                 break;
         }
