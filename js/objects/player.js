@@ -10,8 +10,9 @@ function Player (canvas, posX, posY) {
     this.position = [];
     this.visible = true;   
 }
-
+//nivel1
 Player.prototype.drawPlayer = function (){
+   
     if (!this.visible) return;
     console.log(myGame.board.row1);
     if(this.posY <= (myGame.board.row1.posY- 55) || this.posY > (myGame.board.row1.posY + 30) && this.posY < (myGame.board.row2.posY-52)) {
@@ -29,6 +30,25 @@ Player.prototype.drawPlayer = function (){
         
     } 
    
+}
+//nivel2
+Player.prototype.drawPlayerBoard2 = function (){
+
+    if (!this.visible) return;
+    if(this.posY <= (myGame.board.row1.posY- 55) || this.posY > (myGame.board.row1.posY + 30) && this.posY < (myGame.board.row2.posY-52)) {
+        /*leming*/
+        this.drawLemming();
+        this.posY+=3;
+    } else  {
+        if (this.direction==="left") {
+            this.drawLemmingLeft();
+        } else if (this.direction==="right") {
+            this.drawLemmingRight();
+        } else {
+            this.drawLemming();
+        }
+        
+    } 
 }
 
 //Game Over
@@ -70,8 +90,20 @@ Player.prototype.moveLeft = function (){
         return;
     }
 }
-
+//nivel1
 Player.prototype.dig = function (){
+    if (this.posY < (myGame.board.row1.posY + 40) && (this.posX <  (myGame.board.col1m.posX - 25) || this.posX > (myGame.board.col1m.posX + 25))) {
+        this.isDiggin = true;
+        this.position.push({x:this.posX,y:this.posY})
+        this.posY += 5;
+        this.direction="up"
+    } else { 
+        return;
+    }
+        
+ }
+ //nivel2
+ Player.prototype.digBoard2 = function (){
     if (this.posY < (myGame.board.row1.posY + 40) && (this.posX <  (myGame.board.col1m.posX - 25) || this.posX > (myGame.board.col1m.posX + 25))) {
         this.isDiggin = true;
         this.position.push({x:this.posX,y:this.posY})

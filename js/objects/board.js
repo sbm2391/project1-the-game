@@ -100,5 +100,3 @@ if(myGame.player1.isDiggin){
 
 }
 
-//Nivel 2 board
-
