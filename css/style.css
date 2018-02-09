@@ -102,3 +102,7 @@ canvas {
 .display-none{
     display: none;
 }
+
+#next-level {
+    width: 200px;
+}

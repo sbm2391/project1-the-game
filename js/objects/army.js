@@ -64,7 +64,7 @@ Army.prototype.moveArmy = function (){
 //move army
 Army.prototype.moveArmyBoard2 = function (){
     //console.log(this)
-    if(this.posY <= (myGame.board.row11.posY- 55) || (this.posY > (myGame.board.row11.posY + 30) && this.posY < (myGame.board.row21.posY-52)) || (this.posY > (myGame.board.row21.posY + 30) && this.posY < (myGame.board.row31.posY-52)) // || (this.posY > (myGame.board.row21.posY + 30) && this.posY < (myGame.board.row31.posY-52))
+    if(this.posY <= (myGame.board.row11.posY- 55) || (this.posY > (myGame.board.row11.posY + 30) && this.posY <= (myGame.board.row21.posY-52)) || (this.posY > (myGame.board.row21.posY + 30) && this.posY <= (myGame.board.row31.posY-52)) // || (this.posY > (myGame.board.row21.posY + 30) && this.posY < (myGame.board.row31.posY-52))
     ){
         /*leming*/
         console.log("entrando")
