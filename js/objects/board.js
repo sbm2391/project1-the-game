@@ -77,10 +77,10 @@ Board.prototype.drawBoard2 = function() {
     this.grass3 = new Grass(canvas,30,400,"#5BBB3D","#3D7D29", 740);
     
     //cols
-    this.col11 = new Column(canvas,330,30,30,100,"#96989A", "metal");
-    this.col21 = new Column(canvas,300,160,30,120,"#96989A", "metal");
+    this.col11 = new Column(canvas,330,30,30,100,"rgba(150, 152, 154, 0)", "metal");
+    this.col21 = new Column(canvas,300,160,30,120,"rgba(150, 152, 154, 0)", "metal");
     this.col22 = new Column(canvas,500,160,30,120,"#96989A", "metal");
-    this.col31 = new Column(canvas,470,310,30,120,"#96989A", "metal");
+    this.col31 = new Column(canvas,470,310,30,120,"rgba(150, 152, 154, 0)", "metal");
     //door
     this.door = new Door(canvas,700,320,60,100);
     if(myGame.player1.isDiggin){
@@ -89,5 +89,5 @@ Board.prototype.drawBoard2 = function() {
         this.ctx.fillRect(myGame.player1.position[0].x - 4,  myGame.player1.position[0].y + 20,25,65);
        
       }
-      
+
 }

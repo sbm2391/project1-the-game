@@ -5,11 +5,17 @@ var mySound;
 var totalScore=0;
 var myMusic;
 var totalScoreArmy=0;
+var interval;
 $(document).ready(function(){
 
     canvas = document.getElementById("board").getContext('2d');
-    nextLevel();
 
+     start();
+    $("#next-level").on("click", function(){
+        clearInterval(interval)
+        $(".win").css("opacity", "0");
+        nextLevel();
+    });
     
 });
 
@@ -20,6 +26,7 @@ function army (){
 }
 
 function start (){
+    console.log("funcionando nivel 1")
     myGame = new Game(canvas); 
     myGame.board.drawBoard1();
   
@@ -33,7 +40,8 @@ function start (){
         keyListener();
         //army
         army();
-        var a = setInterval(function(e) {
+        interval = setInterval(function(e) {
+            console.log("funcionando interval board 1")
             myGame.board.drawBoard1();
             //lemming
             myGame.player1.drawPlayer();
@@ -48,25 +56,26 @@ function start (){
 function nextLevel(){
     myGame = new Game(canvas); 
     myGame.board.drawBoard2();
-    $("#btn").on("click", function(){     
+    //$("#btn").on("click", function(){     
         //audio 
         myMusic = new Audio("music/background-music.mp3");
         myMusic.loop = true;
         myMusic.volume = 0.3;
-        //myMusic.play();
+        myMusic.play();
         //controls
         keyListener2();
         //army
         army();
-        var a = setInterval(function(e) {
+        interval = setInterval(function(e) {
+            console.log("funcionando interval board 2")
             myGame.board.drawBoard2();
             //lemming
             myGame.player1.drawPlayerBoard2();
             startArmyBoard2();
             //myGame.player1.gameOver();
-            score();
+            scoreBoar2();
         },1000/fps)
-    });
+    //});
 }
 
 //nivel1
@@ -90,7 +99,7 @@ function startArmy(){
 function startArmyBoard2(){
    
     myGame.army.forEach(function(element){
-        element.moveArmy();
+        element.moveArmyBoard2();
         //element.army.gameOver();
         if (myGame.player1.position.length>0){
         if (myGame.player1.position[0].x === element.posX) {
@@ -107,6 +116,18 @@ function score(){
     totalScore = totalScoreArmy + myGame.player1.points;
     $("#score").text(`Score: ${totalScore}`)
     if (totalScore === 10){
+        console.log(totalScore)
+        $(".win").css("opacity", "100");
+        $(".win p").text(`Score: ${totalScore}`);
+        $("#score").text(`Score: ${totalScore}`);
+        myMusic.pause();
+    }
+}
+
+function scoreBoar2(){
+    totalScore = totalScoreArmy + myGame.player1.points;
+    $("#score").text(`Score: ${totalScore}`)
+    if (totalScore === 20){
         console.log(totalScore)
         $(".win").css("opacity", "100");
         $(".win p").text(`Score: ${totalScore}`);

@@ -60,6 +60,50 @@ Army.prototype.moveArmy = function (){
     
     }
 
+//nivel2
+//move army
+Army.prototype.moveArmyBoard2 = function (){
+    //console.log(this)
+    if(this.posY <= (myGame.board.row11.posY- 55) || (this.posY > (myGame.board.row11.posY + 30) && this.posY < (myGame.board.row21.posY-52)) || (this.posY > (myGame.board.row21.posY + 30) && this.posY < (myGame.board.row31.posY-52)) // || (this.posY > (myGame.board.row21.posY + 30) && this.posY < (myGame.board.row31.posY-52))
+    ){
+        /*leming*/
+        console.log("entrando")
+        this.drawArmy();
+        this.posY+=3;
+    } else  {
+
+        if (this.direction ==="left") {
+            if(this.posX === (myGame.board.col1.posX + 40)) {
+                this.direction ="right";
+                this.drawArmyRight();
+            } else {
+                this.drawArmyLeft();
+                this.posX-=1
+            }
+        } else if (this.direction ==="right") {
+            if(this.posX === (myGame.board.col2.posX - 30)) {
+                this.direction ="left"
+                this.drawArmyLeft();
+            } else {
+                this.drawArmyRight();
+                this.posX+=1
+            }
+            
+        } else {
+            this.drawArmy();
+             this.direction="right"
+        }  
+        
+    } 
+    myGame.army.forEach(function(element, index){
+    if (element.posY > 308 && element.posX > 710) {
+            totalScoreArmy+=1;
+           myGame.army.splice(index, 1)
+           console.log(totalScoreArmy)
+        } 
+    });
+    
+    }
 
 Army.prototype.ArmyDig = function (){
     if (this.posY < (myGame.board.row11.posY + 40)) {

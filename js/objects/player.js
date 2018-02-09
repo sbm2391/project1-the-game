@@ -14,7 +14,6 @@ function Player (canvas, posX, posY) {
 Player.prototype.drawPlayer = function (){
    
     if (!this.visible) return;
-    console.log(myGame.board.row11);
     if(this.posY <= (myGame.board.row11.posY- 55) || this.posY > (myGame.board.row11.posY + 30) && this.posY < (myGame.board.row21.posY-52)) {
         /*leming*/
         this.drawLemming();
