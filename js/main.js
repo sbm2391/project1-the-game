@@ -125,7 +125,7 @@ function score(){
 }
 
 function scoreBoar2(){
-    totalScore = totalScoreArmy + myGame.player1.points;
+    totalScore = totalScoreArmy + myGame.player1.points + 1;
     $("#score").text(`Score: ${totalScore}`)
     if (totalScore === 20){
         console.log(totalScore)
