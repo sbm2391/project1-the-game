@@ -62,8 +62,22 @@ Army.prototype.moveArmy = function (){
 
 
 Army.prototype.ArmyDig = function (){
-    if (this.posY < (myGame.board.row11.posY + 40) && (this.posX < (myGame.board.col1m.posX + 25) || this.posX > (myGame.board.col1m.posX + 60))) {
+    if (this.posY < (myGame.board.row11.posY + 40)) {
         //this.drawGround();
+        this.posY += 2;
+        this.direction="up"
+    } else { 
+        return;
+    }
+}
+
+//Nivel2
+Army.prototype.ArmyDigBoard2 = function (){
+    if (this.posY < (myGame.board.row11.posY + 40)) {
+        //this.drawGround();
+        this.posY += 2;
+        this.direction="up"
+    } else if (this.posY < (myGame.board.row21.posY + 40)){ 
         this.posY += 2;
         this.direction="up"
     } else { 

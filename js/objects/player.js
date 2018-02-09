@@ -104,13 +104,33 @@ Player.prototype.drawPlayerBoard2 = function (){
     } 
 }
 
+//move lemmings 
+//move Left
+Player.prototype.moveLeftBoard2 = function (){
+    if((this.posY < (myGame.board.row11.posY - 52) && this.posX > (myGame.board.col1.posX + 40))){
+        this.posX -= 10;
+        this.direction="left"
+
+    }else if(this.posY < (myGame.board.row21.posY-20) && this.posX > (myGame.board.col1.posX + 40)){
+        this.posX -= 10;
+        this.direction="left"
+    } else if (this.posY < (myGame.board.row31.posY-20) && this.posX > (myGame.board.col1.posX + 40)){
+        this.posX -= 10;
+        this.direction="left"
+    } else {
+        return;
+    }
+}
+//dig
  Player.prototype.digBoard2 = function (){
     if ((this.posY < (myGame.board.row12.posY + 40) && (this.posX >  (myGame.board.col11.posX))) || (this.posY < (myGame.board.row21.posY + 40) && (this.posX >  (myGame.board.col11.posX)))) {
         this.isDiggin = true;
         this.position.push({x:this.posX,y:this.posY})
+        console.log(this.position)
         this.posY += 5;
         this.direction="up"
     } else { 
+
         return;
     }
         

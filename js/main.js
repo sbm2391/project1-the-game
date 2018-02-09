@@ -44,6 +44,7 @@ function start (){
     });
 
 }
+//nivel2
 function nextLevel(){
     myGame = new Game(canvas); 
     myGame.board.drawBoard2();
@@ -61,14 +62,14 @@ function nextLevel(){
             myGame.board.drawBoard2();
             //lemming
             myGame.player1.drawPlayerBoard2();
-            startArmy();
-            myGame.player1.gameOver();
+            startArmyBoard2();
+            //myGame.player1.gameOver();
             score();
         },1000/fps)
     });
 }
 
-
+//nivel1
 function startArmy(){
    
     myGame.army.forEach(function(element){
@@ -77,6 +78,23 @@ function startArmy(){
         if (myGame.player1.position.length>0){
         if (myGame.player1.position[0].x === element.posX) {
             element.ArmyDig();
+          } else {
+              return;
+          }
+        }
+        totalScore = totalScoreArmy + myGame.player1.points;
+    });
+}
+
+//nivel2
+function startArmyBoard2(){
+   
+    myGame.army.forEach(function(element){
+        element.moveArmy();
+        //element.army.gameOver();
+        if (myGame.player1.position.length>0){
+        if (myGame.player1.position[0].x === element.posX) {
+            element.ArmyDigBoard2();
           } else {
               return;
           }
@@ -129,7 +147,7 @@ function keyListener2(){
                 myGame.player1.moveRight() 
                 break;
             case 37: //<-
-                myGame.player1.moveLeft();
+                myGame.player1.moveLeftBoard2();
                 break;
             case 40: //down
                 myGame.player1.digBoard2();

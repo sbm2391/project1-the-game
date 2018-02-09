@@ -31,7 +31,7 @@ Board.prototype.drawBoard1 = function() {
     this.col2 = new Column(canvas,770,0,30,450,"#E88E0C","ground");
     this.row21 = new Row(canvas,0,420,800,30,"#96989A", "metal"); 
     //gap
-    console.log(myGame.player1)
+
     if(myGame.player1.isDiggin){
         this.ctx.fillStyle="#8A4B07";
         this.ctx.fillRect(myGame.player1.position[0].x - 4,  myGame.player1.position[0].y + 20,25,65);
@@ -83,5 +83,11 @@ Board.prototype.drawBoard2 = function() {
     this.col31 = new Column(canvas,470,310,30,120,"#96989A", "metal");
     //door
     this.door = new Door(canvas,700,320,60,100);
-
+    if(myGame.player1.isDiggin){
+        console.log("digging")
+        this.ctx.fillStyle="#8A4B07";
+        this.ctx.fillRect(myGame.player1.position[0].x - 4,  myGame.player1.position[0].y + 20,25,65);
+       
+      }
+      
 }
